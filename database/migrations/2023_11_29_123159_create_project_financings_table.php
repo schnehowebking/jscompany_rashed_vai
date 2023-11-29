@@ -14,8 +14,20 @@ return new class extends Migration
     public function up()
     {
         Schema::create('project_financings', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->foreignId('prospect_id')->constrained('prospects');
+          $table->decimal('contribution');
+          $table->decimal('loan_at_zero_rate');
+          $table->decimal('employer_loan');
+          $table->decimal('relay_loan');
+          $table->decimal('regional_subsidy');
+          $table->decimal('non_loan_financing_capacity');
+          $table->string('ready');
+          $table->string('schedule');
+          $table->decimal('debt');
+          $table->decimal('debt_with_credit');
+          $table->decimal('total_financing_of_project');
+          $table->timestamps();
         });
     }
 

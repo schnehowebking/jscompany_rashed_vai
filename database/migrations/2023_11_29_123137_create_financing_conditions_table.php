@@ -14,8 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('financing_conditions', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->foreignId('prospect_id')->constrained('prospects');
+          $table->decimal('loan_rate');
+          $table->decimal('insurance_rate');
+          $table->string('teag');
+          $table->integer('duration_in_years');
+          $table->integer('duration_in_months');
+          $table->decimal('current_credit');
+          $table->timestamps();
         });
     }
 

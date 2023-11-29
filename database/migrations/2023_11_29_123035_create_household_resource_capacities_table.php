@@ -14,8 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('household_resource_capacities', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+          $table->id();
+          $table->foreignId('prospect_id')->constrained('prospects');
+          $table->decimal('annual_tax_income');
+          $table->decimal('annual_rental_income_before_abatement');
+          $table->decimal('annual_rental_income_after_abatement');
+          $table->decimal('potential_help_financial_assistance');
+          $table->decimal('financial_capacity_of_household');
+          $table->timestamps();
         });
     }
 

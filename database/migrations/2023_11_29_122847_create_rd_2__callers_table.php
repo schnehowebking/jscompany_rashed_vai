@@ -14,7 +14,36 @@ return new class extends Migration
     public function up()
     {
         Schema::create('rd_2__callers', function (Blueprint $table) {
-            $table->id();
+          $table->id();
+            $table->foreignId('prospect_id')->constrained('prospects');
+            $table->string('name_or_ste');
+            $table->string('first_name');
+            $table->string('current_address');
+            $table->string('municipality');
+            $table->string('mobile_phone');
+            $table->string('landline_phone');
+            $table->date('date_of_birth');
+            $table->string('place_of_birth');
+            $table->string('current_residence');
+            $table->string('business_phone');
+            $table->string('email');
+            $table->string('profession');
+            $table->string('type_of_contract');
+            $table->integer('professional_maturity_months');
+            $table->string('bank_name');
+            $table->string('savings_info');
+            $table->decimal('annual_tax_income');
+            $table->integer('child_dependent_on_tax');
+            $table->decimal('rental_charge');
+            $table->decimal('rental_income');
+            $table->decimal('rental_income_70_percent');
+            $table->integer('bank_seniority_months');
+            $table->integer('seniority_pel_months');
+            $table->decimal('credit_remaining_to_settle');
+            $table->decimal('credit_a_in_progress_per_month');
+            $table->integer('remaining_month_credit_a_in_progress');
+            $table->string('family_situation');
+            $table->decimal('personal_contribution');
             $table->timestamps();
         });
     }
