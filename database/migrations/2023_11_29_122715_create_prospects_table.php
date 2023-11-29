@@ -17,7 +17,7 @@ return new class extends Migration
           $table->id();
           $table->string('behalf');
           $table->string('first_name');
-          $table->string('kind');
+          $table->string('genre');
           $table->string('telephone_prospect_1');
           $table->string('desired_work');
           $table->string('desired_house_type');
