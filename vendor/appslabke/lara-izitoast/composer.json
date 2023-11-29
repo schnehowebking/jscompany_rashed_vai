@@ -1,0 +1,31 @@
+{
+  "name": "appslabke/lara-izitoast",
+  "description": "Simplified wrapper for izitoast javascript notification library",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "MARVIN COLLINS",
+      "email": "marvin@appslab.co.ke"
+    }
+  ],
+  "minimum-stability": "beta",
+  "require": {
+    "php": ">=5.6"
+  },
+  "autoload": {
+    "psr-4": {
+      "LaraIzitoast\\" : "lara-izitoast/src/"
+    },
+    "files": [
+      "lara-izitoast/src/helpers.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LaraIzitoast\\LaraIzitoastServiceProvider"
+      ]
+    }
+  }
+}

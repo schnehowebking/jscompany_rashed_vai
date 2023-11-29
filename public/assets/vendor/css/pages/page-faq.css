@@ -1,0 +1,71 @@
+.faq-header {
+  position: relative;
+  background-color: rgba(90, 141, 238, 0.08);
+  min-height: 270px !important;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+.faq-header:before {
+  width: 21rem;
+  height: 21rem;
+  content: " ";
+  position: absolute;
+  top: -151px;
+  background: url("../../../img/pages/auth-top-left.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+html:not([dir=rtl]) .faq-header:before {
+  left: -135px;
+}
+[dir=rtl] .faq-header:before {
+  right: -135px;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+.faq-header:after {
+  width: 10rem;
+  height: 20rem;
+  content: " ";
+  position: absolute;
+  bottom: -100px;
+  background-image: url("../../../img/pages/auth-right-bottom.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+html:not([dir=rtl]) .faq-header:after {
+  right: -1.8rem;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+}
+[dir=rtl] .faq-header:after {
+  left: -1.8rem;
+  -webkit-transform: rotate(135deg);
+          transform: rotate(135deg);
+}
+.faq-header .input-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 55%;
+}
+.faq-header .input-wrapper .input-group-text,
+.faq-header .input-wrapper .form-control {
+  border-color: transparent;
+}
+@media (max-width: 575.98px) {
+  .faq-header .input-wrapper {
+    max-width: 70%;
+  }
+}
+
+.faq-nav-icon {
+  font-size: 1.25rem;
+}
+
+.light-style .bg-faq-section {
+  background-color: rgba(38, 60, 85, 0.06);
+}
+
+.dark-style .bg-faq-section {
+  background-color: rgba(99, 123, 169, 0.08);
+}
