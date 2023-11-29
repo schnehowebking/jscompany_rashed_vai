@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('financing_conditions', function (Blueprint $table) {
           $table->id();
           $table->foreignId('prospect_id')->constrained('prospects');
-          $table->decimal('loan_rate');
-          $table->decimal('insurance_rate');
-          $table->string('teag');
-          $table->integer('duration_in_years');
-          $table->integer('duration_in_months');
-          $table->decimal('current_credit');
+          $table->decimal('loan_rate')->nullable();
+          $table->decimal('insurance_rate')->nullable();
+          $table->string('teag')->nullable();
+          $table->integer('duration_in_years')->nullable();
+          $table->integer('duration_in_months')->nullable();
+          $table->decimal('current_credit')->nullable();
           $table->timestamps();
         });
     }

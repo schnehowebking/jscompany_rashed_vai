@@ -16,17 +16,17 @@ return new class extends Migration
         Schema::create('project_financings', function (Blueprint $table) {
           $table->id();
           $table->foreignId('prospect_id')->constrained('prospects');
-          $table->decimal('contribution');
-          $table->decimal('loan_at_zero_rate');
-          $table->decimal('employer_loan');
-          $table->decimal('relay_loan');
-          $table->decimal('regional_subsidy');
-          $table->decimal('non_loan_financing_capacity');
-          $table->string('ready');
-          $table->string('schedule');
-          $table->decimal('debt');
-          $table->decimal('debt_with_credit');
-          $table->decimal('total_financing_of_project');
+          $table->decimal('contribution')->nullable();
+          $table->decimal('loan_at_zero_rate')->nullable();
+          $table->decimal('employer_loan')->nullable();
+          $table->decimal('relay_loan')->nullable();
+          $table->decimal('regional_subsidy')->nullable();
+          $table->decimal('non_loan_financing_capacity')->nullable();
+          $table->string('ready')->nullable();
+          $table->string('schedule')->nullable();
+          $table->decimal('debt')->nullable();
+          $table->decimal('debt_with_credit')->nullable();
+          $table->decimal('total_financing_of_project')->nullable();
           $table->timestamps();
         });
     }
