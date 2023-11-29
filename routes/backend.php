@@ -6,12 +6,16 @@ use App\Http\Controllers\backend\UsersController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\ProspectController;
+use App\Http\Controllers\Rd2BrowerController;
 
 Route::get('test', [CustomerController::class, 'test']);
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
   Route::get('prospect', [ProspectController::class, 'index'])->name('prospect.create');
+
+
+  Route::get('rd2brower', [Rd2BrowerController::class, 'index'])->name('rd2brower.create');
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');

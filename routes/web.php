@@ -12,5 +12,3 @@ Route::get('clear', function () {
   Artisan::call('optimize:clear');
   return redirect()->back()->withSuccess("Cache cleared");
 });
-
-Route::get('remove_unwanted', [CustomerController::class, 'atutoRemoveCustomerOrApplication']);

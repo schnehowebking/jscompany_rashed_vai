@@ -14,7 +14,7 @@ class Rd2BrowerController extends Controller
      */
     public function index()
     {
-        //
+        return view('backend.rd2borrower.create');
     }
 
     /**
