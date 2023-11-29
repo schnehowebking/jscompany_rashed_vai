@@ -5,11 +5,13 @@ use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\backend\UsersController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\CustomerController;
+use App\Http\Controllers\ProspectController;
 
 Route::get('test', [CustomerController::class, 'test']);
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
+  Route::get('prospect', [ProspectController::class, 'index'])->name('prospect.create');
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');

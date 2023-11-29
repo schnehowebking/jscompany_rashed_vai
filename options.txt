@@ -1,0 +1,104 @@
+<option value="T1">T1</option>
+<option value="T2">T2</option>
+<option value="T3">T3</option>
+<option value="T4">T4</option>
+<option value="T5">T5</option>
+<option value="T6">T6</option>
+<option value="T7">T7</option>
+<option value="JUMELLÉE">JUMELLÉE</option>
+
+
+
+
+<option value="RES.PRINC.">RES.PRINC.</option>
+<option value="Rental">Rental</option>
+<option value="DEFISC. Or CREDIT IMPOT">DEFISC. Or CREDIT IMPOT</option>
+
+
+
+
+
+<option value="Awala-Yalimapo">Awala-Yalimapo</option>
+<option value="Camopi">Camopi</option>
+<option value="Grand-Santi">Grand-Santi</option>
+<option value="Iracoubo">Iracoubo</option>
+<option value="Kourou">Kourou</option>
+<option value="Macouria">Macouria</option>
+<option value="Mana">Mana</option>
+<option value="Maripasoula">Maripasoula</option>
+<option value="Matoury">Matoury</option>
+<option value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
+<option value="Ouanary">Ouanary</option>
+<option value="Papaichton">Papaichton</option>
+<option value="Reginat">Reginat</option>
+<option value="Remire-Montjoly">Remire-Montjoly</option>
+<option value="Roura">Roura</option>
+<option value="Saint-Élie">Saint-Élie</option>
+<option value="Saint-Georges">Saint-Georges</option>
+<option value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
+<option value="Saul">Saul</option>
+<option value="Sinnamary">Sinnamary</option>
+
+
+
+
+
+
+<option value="97319 Awala-Yalimapo">97319 Awala-Yalimapo</option>
+<option value="97330 Camopi">97330 Camopi</option>
+<option value="97340 Grand-Santi">97340 Grand-Santi</option>
+<option value="97350 Iracoubo">97350 Iracoubo</option>
+<option value="97310 Kourou">97310 Kourou</option>
+<option value="97355 Macouria">97355 Macouria</option>
+<option value="97318 Mana">97318 Mana</option>
+<option value="97360">97360</option>
+<option value="97370 Maripasoula">97370 Maripasoula</option>
+<option value="97351 Matoury">97351 Matoury</option>
+<option value="97356 Montsinéry-Tonnegrande">97356 Montsinéry-Tonnegrande</option>
+<option value="97380 Ouanary">97380 Ouanary</option>
+<option value="97316 Papaichton">97316 Papaichton</option>
+<option value="97353 Régina">97353 Régina</option>
+<option value="97390">97390</option>
+<option value="97354 Remire-Montjoly">97354 Remire-Montjoly</option>
+<option value="97311 Roura">97311 Roura</option>
+<option value="97352">97352</option>
+<option value="97312 Saint-Élie">97312 Saint-Élie</option>
+<option value="97313 Saint-Georges">97313 Saint-Georges</option>
+<option value="97320 Saint-Laurent-du-Maroni">97320 Saint-Laurent-du-Maroni</option>
+<option value="97314 Saül">97314 Saül</option>
+<option value="97315 Sinnamary">97315 Sinnamary</option>
+
+
+
+
+
+<option value="BRED-Banque Populaire">BRED-Banque Populaire</option>
+<option value="Savings Bank">Savings Bank</option>
+<option value="Caisse de Crédit Mutuel">Caisse de Crédit Mutuel</option>
+<option value="The Postal Bank">The Postal Bank</option>
+<option value="BNP Paribas Antilles Guyana">BNP Paribas Antilles Guyana</option>
+<option value="Crédit Agricole Martinique-Guyane">Crédit Agricole Martinique-Guyane</option>
+<option value="CASDEN Banque Populaire">CASDEN Banque Populaire</option>
+
+
+<option value="C.D.I">C.D.I</option>
+<option value="C.D.D">C.D.D</option>
+<option value="CONCTRACTUAL">CONCTRACTUAL</option>
+<option value="Official">Official</option>
+<option value="GERANT">GERANT</option>
+<option value="WITHOUT ACTIVITY">WITHOUT ACTIVITY</option>
+
+
+
+<option value=". +1">. +1</option>
+<option value=". +2">. +2</option>
+<option value=". +3">. +3</option>
+<option value=". +4">. +4</option>
+<option value=". +5">. +5</option>
+<option value=". +6">. +6</option>
+<option value=". +7">. +7</option>
+<option value=". +8">. +8</option>
+<option value=". +9">. +9</option>
+<option value=". +10">. +10</option>
+<option value=". +11">. +11</option>
+<option value=". +12">. +12</option>
