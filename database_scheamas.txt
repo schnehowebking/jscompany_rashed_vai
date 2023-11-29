@@ -1,0 +1,183 @@
+Prospects Table(RD1Interview Table):
+
+id (Primary Key)
+behalf_name
+first_name
+genre
+telephone_prospect_1
+desired_work
+desired_house_type
+has_land
+land_municipality
+land_document_requested
+desired_municipality
+desired_surface
+financial_simulation
+simulation_amount
+simulation_bank
+simulation_broker
+desired_rd1_date
+desired_rd1_time
+how_know_company
+how_know_company_if_no
+interlocutor_appointment
+exchange_validated_by
+assignment_prospect_rd1_validation
+ 
+  
+
+ 
+  
+
+
+RD2CallerInformation Table:
+
+id (Primary Key)
+prospect_id (Foreign Key referencing Prospects Table)
+name_or_ste
+first_name
+current_address
+municipality
+mobile_phone
+landline_phone
+date_of_birth
+place_of_birth
+current_residence
+business_phone
+email
+profession
+type_of_contract
+professional_maturity_months
+bank_name
+savings_info
+annual_tax_income
+child_dependent_on_tax
+rental_charge
+rental_income
+rental_income_70_percent
+bank_seniority_months
+seniority_pel_months
+credit_remaining_to_settle
+credit_a_in_progress_per_month
+remaining_month_credit_a_in_progress
+family_situation
+personal_contribution
+ 
+  
+
+
+RD2CoBorrowerInformation Table:
+
+id (Primary Key)
+caller_id (Foreign Key referencing RD2CallerInformation Table)
+name_or_ste
+first_name
+current_address
+municipality
+mobile_phone
+landline_phone
+date_of_birth
+place_of_birth
+current_residence
+business_phone
+email
+profession
+type_of_contract
+professional_maturity_months
+bank_name
+savings_info
+annual_tax_income
+child_dependent_on_tax
+rental_charge
+rental_income
+rental_income_70_percent
+bank_seniority_months
+seniority_pel_months
+credit_remaining_to_settle
+credit_a_in_progress_per_month
+remaining_month_credit_a_in_progress
+family_situation
+personal_contribution
+ 
+  
+
+
+LandChargeInformation Table:
+
+id (Primary Key)
+prospect_id (Foreign Key referencing Prospects Table)
+site_address
+site_municipality
+geotechnical_study
+land_serviced
+everything_in_sewer
+parcel_or_lot_number
+type_of_work_selected
+land_on_excessive_slope
+cadastral_section
+urban_planning_area
+land_acquisition_stage
+surface_in_square_meters
+price_per_square_meter
+venal_value_of_land
+ 
+  
+
+
+HouseholdResourceCapacity Table:
+
+id (Primary Key)
+prospect_id (Foreign Key referencing Prospects Table)
+annual_tax_income
+annual_rental_income_before_abatement
+annual_rental_income_after_abatement
+potential_help_financial_assistance
+financial_capacity_of_household
+ 
+  
+
+
+HouseholdDuctment Table:
+
+id (Primary Key)
+prospect_id (Foreign Key referencing Prospects Table)
+eligible_debt_before_credit
+current_credit
+debt_with_monthly_credit
+debt_with_annual_credit
+capacity
+ 
+  
+
+
+FinancingCondition Table:
+
+id (Primary Key)
+prospect_id (Foreign Key referencing Prospects Table)
+loan_rate
+insurance_rate
+teag
+duration_in_years
+duration_in_months
+current_credit
+  
+  
+
+
+ProjectFinancing Table:
+
+id (Primary Key)
+prospect_id (Foreign Key referencing Prospects Table)
+contribution
+loan_at_zero_rate
+employer_loan
+relay_loan
+regional_subsidy
+non_loan_financing_capacity
+ready
+schedule
+debt
+debt_with_credit
+total_financing_of_project
+ 
+  
