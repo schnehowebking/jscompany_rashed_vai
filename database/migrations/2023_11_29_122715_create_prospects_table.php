@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('prospects', function (Blueprint $table) {
           $table->id();
-          $table->string('behalf')->nullable();
+          $table->string('name')->nullable();
           $table->string('first_name')->nullable();
           $table->string('genre')->nullable();
           $table->string('telephone_prospect_1')->nullable();
