@@ -35,6 +35,7 @@
         <div class="col-12">
             <form action="{{ route('prospect.update', $prospect->id) }}" method="POST">
                 @csrf
+                @method('PUT')
                 <!-- Prospect Details -->
                 <div id="" class="content">
                     <div class="content-header mb-3">
