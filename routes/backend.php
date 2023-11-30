@@ -16,7 +16,7 @@ Route::middleware(['auth'])->group(function () {
   Route::get('prospect/create', [ProspectController::class, 'create'])->name('prospect.create');
   Route::post('prospect/store', [ProspectController::class, 'store'])->name('prospect.store');
 
-  Route::get('rd2brower', [Rd2BrowerController::class, 'index'])->name('rd2brower.create');
+  Route::resource('rd2brower', Rd2BrowerController::class);
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');

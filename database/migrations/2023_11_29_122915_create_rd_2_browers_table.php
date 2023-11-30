@@ -22,7 +22,7 @@ return new class extends Migration
           $table->string('municipality')->nullable();
           $table->string('mobile_phone')->nullable();
           $table->string('landline_phone')->nullable();
-          $table->date('date_of_birth')->nullable();
+          $table->string('date_of_birth')->nullable();
           $table->string('place_of_birth')->nullable();
           $table->string('current_residence')->nullable();
           $table->string('business_phone')->nullable();

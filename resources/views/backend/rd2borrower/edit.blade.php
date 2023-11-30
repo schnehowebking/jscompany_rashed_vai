@@ -28,7 +28,7 @@
 
         <!-- Default Icons Wizard -->
         <div class="col-12">
-            <form action="{{ route('rd2brower.store')}}" method="POST">
+            <form action="{{ route('rd2brower.update', [$brower->id])}}" method="POST">
               @csrf
                 <!-- Account Details -->
                 <div id="account-details" class="content">

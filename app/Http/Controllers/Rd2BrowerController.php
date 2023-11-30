@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Rd_2_brower;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class Rd2BrowerController extends Controller
 {
@@ -24,7 +25,7 @@ class Rd2BrowerController extends Controller
      */
     public function create()
     {
-        //
+      return view('backend.rd2borrower.create');
     }
 
     /**
@@ -35,7 +36,13 @@ class Rd2BrowerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $brower = Rd_2_brower::create($request->all());
+      $brower->caller_id = Auth()->user()->id;
+      $brower->save();
+
+      return redirect()
+        ->back()
+        ->with('success', 'Prospect created successfully');
     }
 
     /**
@@ -57,7 +64,7 @@ class Rd2BrowerController extends Controller
      */
     public function edit(Rd_2_brower $rd_2_brower)
     {
-        //
+        return view('backend.rd2borrower.edit', compact('rd_2_brower'));
     }
 
     /**
@@ -69,7 +76,10 @@ class Rd2BrowerController extends Controller
      */
     public function update(Request $request, Rd_2_brower $rd_2_brower)
     {
-        //
+      $rd_2_brower->update($request->all());
+      return redirect()
+        ->back()
+        ->with('success', 'Prospect updated successfully');
     }
 
     /**
