@@ -12,6 +12,6 @@ class HouseholdResourceCapacity extends Model
     protected $guarded = [];
     public function prospect()
     {
-        return $this->belongsTo(Prospect::class);
+        return $this->belongsTo(Prospect::class, 'prospect_id');
     }
 }

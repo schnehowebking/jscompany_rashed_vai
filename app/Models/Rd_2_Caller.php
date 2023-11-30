@@ -13,7 +13,7 @@ class Rd_2_Caller extends Model
 
   public function prospect()
   {
-    return $this->belongsTo(Prospect::class);
+    return $this->belongsTo(Prospect::class, 'prospect_id');
   }
   public function rd2brower()
   {

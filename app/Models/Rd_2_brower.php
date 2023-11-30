@@ -9,8 +9,9 @@ class Rd_2_brower extends Model
 {
   use HasFactory;
   protected $guarded = [];
+
   public function rd2Caller()
   {
-    return $this->belongsTo(Rd_2_Caller::class);
+    return $this->belongsTo(Rd_2_Caller::class, 'caller_id');
   }
 }

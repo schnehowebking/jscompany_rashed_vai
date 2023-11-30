@@ -14,7 +14,7 @@ class HouseholdDuctment extends Model
 
     public function prospect()
     {
-        return $this->belongsTo(Prospect::class);
+        return $this->belongsTo(Prospect::class, 'prospect_id');
     }
 
 }
