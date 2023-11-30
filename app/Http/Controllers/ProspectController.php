@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prospect;
+
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 // use App\Models\Rd_2_Caller;
 // use App\Models\Rd_2_brower;
 // use App\Models\FinancingCondition;
@@ -20,10 +23,22 @@ class ProspectController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    //
-    return view('backend.prospect.index');
+
+    if($request->ajax()) {
+      $prospects = DB::table('prospects')->get();
+      return DataTables::of($prospects)
+        ->addIndexColumn()
+        ->addColumn('action', function($prospect) {
+          $html = '<a href="'.route('prospect.edit', $prospect->id).'" class="me-1"><i class="bx bx-edit"></i></a>';
+          return $html;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+     };
+
+    return \view('backend.prospect.index');
   }
 
   /**
@@ -105,7 +120,7 @@ class ProspectController extends Controller
 
       return redirect()
         ->back()
-        ->with('success', 'Prospect created successfully');
+        ->withSuccess('Prospect created successfully');
     // // } else {
     //   return redirect()
     //     ->back()
@@ -130,9 +145,11 @@ class ProspectController extends Controller
    * @param  \App\Models\Prospect  $prospect
    * @return \Illuminate\Http\Response
    */
-  public function edit(Prospect $prospect)
+  public function edit($id)
   {
     //
+    $prospect = Prospect::find($id);
+    return view('backend.prospect.edit', \get_defined_vars());
   }
 
   /**
@@ -142,9 +159,17 @@ class ProspectController extends Controller
    * @param  \App\Models\Prospect  $prospect
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Prospect $prospect)
+  public function update(Request $request, $id)
   {
     //
+
+    Prospect::find($id)->update([
+      'name' => $request->name,
+      'first_name' => $request->fisrt_name,
+    ]);
+
+
+    return \redirect()->route('prospect.index')->withSuccess('Propect updated successfully');
   }
 
   /**
@@ -153,8 +178,12 @@ class ProspectController extends Controller
    * @param  \App\Models\Prospect  $prospect
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Prospect $prospect)
+  public function destroy($id)
   {
     //
+
+    $prospect = Prospect::find($id);
+    $prospect->delete();
+    return \redirect()->route('prospect.index')->withSuccess("User removed successfully");
   }
 }
