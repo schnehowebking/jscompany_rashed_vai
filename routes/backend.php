@@ -15,6 +15,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('prospect', [ProspectController::class, 'index'])->name('prospect.index');
   Route::get('prospect/create', [ProspectController::class, 'create'])->name('prospect.create');
   Route::post('prospect/store', [ProspectController::class, 'store'])->name('prospect.store');
+  Route::get('prospect/edit/{id}', [ProspectController::class, 'edit'])->name('prospect.edit');
+  Route::put('prospect/edit/{id}', [ProspectController::class, 'update'])->name('prospect.update');
 
   Route::resource('rd2brower', Rd2BrowerController::class);
 

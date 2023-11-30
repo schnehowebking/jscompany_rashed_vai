@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Prospect;
+
+use Yajra\DataTables\DataTables;
+use Illuminate\Support\Facades\DB;
 // use App\Models\Rd_2_Caller;
 // use App\Models\Rd_2_brower;
 // use App\Models\FinancingCondition;
@@ -20,10 +23,22 @@ class ProspectController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function index()
+  public function index(Request $request)
   {
-    //
-    return view('backend.prospect.index');
+
+    if($request->ajax()) {
+      $prospects = DB::table('prospects')->get();
+      return DataTables::of($prospects)
+        ->addIndexColumn()
+        ->addColumn('action', function($prospect) {
+          $html = '<a href="'.route('prospect.edit', $prospect->id).'" class="me-1"><i class="bx bx-edit"></i></a>';
+          return $html;
+        })
+        ->rawColumns(['action'])
+        ->make(true);
+     };
+
+    return \view('backend.prospect.index');
   }
 
   /**
@@ -78,34 +93,34 @@ class ProspectController extends Controller
 
     // if ($validatedData) {
       $prospect = new Prospect();
-      $prospect->name = $request['name'];
-      $prospect->first_name = $request['first_name'];
-      $prospect->genre = $request['genre'];
-      $prospect->telephone_prospect_1 = $request['telephone_prospect_1'];
-      $prospect->desired_work = $request['desired_work'];
-      $prospect->desired_house_type = $request['desired_house_type'];
-      $prospect->has_land = $request['has_land'];
-      $prospect->land_municipality = $request['land_municipality'];
-      $prospect->land_document_requested = $request['land_document_requested'];
-      $prospect->desired_municipality = $request['desired_municipality'];
-      $prospect->desired_surface = $request['desired_surface'];
-      $prospect->financial_simulation = $request['financial_simulation'];
-      $prospect->simulation_amount = $request['simulation_amount'];
-      $prospect->simulation_bank = $request['simulation_bank'];
-      $prospect->simulation_broker = $request['simulation_broker'];
-      $prospect->desired_rd1_date = $request['desired_rd1_date'];
-      $prospect->desired_rd1_time = $request['desired_rd1_time'];
-      $prospect->how_know_company = $request['how_know_company'];
-      $prospect->interlocutor_appointment = $request['interlocutor_appointment'];
-      $prospect->exchange_validated_by = $request['exchange_validated_by'];
-      $prospect->assignment_prospect_rd1_validation = $request['assignment_prospect_rd1_validation'];
+      $prospect->name = $request->input('name');
+      $prospect->first_name = $request->input('first_name');
+      $prospect->genre = $request->input('genre');
+      $prospect->telephone_prospect_1 = $request->input('telephone_prospect_1');
+      $prospect->desired_work = $request->input('desired_work');
+      $prospect->desired_house_type = $request->input('desired_house_type');
+      $prospect->has_land = $request->input('has_land');
+      $prospect->land_municipality = $request->input('land_municipality');
+      $prospect->land_document_requested = $request->input('land_document_requested');
+      $prospect->desired_municipality = $request->input('desired_municipality');
+      $prospect->desired_surface = $request->input('desired_surface');
+      $prospect->financial_simulation = $request->input('financial_simulation');
+      $prospect->simulation_amount = $request->input('simulation_amount');
+      $prospect->simulation_bank = $request->input('simulation_bank');
+      $prospect->simulation_broker = $request->input('simulation_broker');
+      $prospect->desired_rd1_date = $request->input('desired_rd1_date');
+      $prospect->desired_rd1_time = $request->input('desired_rd1_time');
+      $prospect->how_know_company = $request->input('how_know_company');
+      $prospect->interlocutor_appointment = $request->input('interlocutor_appointment');
+      $prospect->exchange_validated_by = $request->input('exchange_validated_by');
+      $prospect->assignment_prospect_rd1_validation = $request->input('assignment_prospect_rd1_validation');
 
       $prospect->save();
       // dd($request->all());
 
       return redirect()
         ->back()
-        ->with('success', 'Prospect created successfully');
+        ->withSuccess('Prospect created successfully');
     // // } else {
     //   return redirect()
     //     ->back()
@@ -130,9 +145,11 @@ class ProspectController extends Controller
    * @param  \App\Models\Prospect  $prospect
    * @return \Illuminate\Http\Response
    */
-  public function edit(Prospect $prospect)
+  public function edit($id)
   {
     //
+    $prospect = Prospect::find($id);
+    return view('backend.prospect.edit', \get_defined_vars());
   }
 
   /**
@@ -142,9 +159,36 @@ class ProspectController extends Controller
    * @param  \App\Models\Prospect  $prospect
    * @return \Illuminate\Http\Response
    */
-  public function update(Request $request, Prospect $prospect)
+  public function update(Request $request, $id)
   {
     //
+
+    $prospect = Prospect::find($id);
+    $prospect->name = $request->input('name');
+    $prospect->first_name = $request->input('first_name');
+    $prospect->genre = $request->input('genre');
+    $prospect->telephone_prospect_1 = $request->input('telephone_prospect_1');
+    $prospect->desired_work = $request->input('desired_work');
+    $prospect->desired_house_type = $request->input('desired_house_type');
+    $prospect->has_land = $request->input('has_land');
+    $prospect->land_municipality = $request->input('land_municipality');
+    $prospect->land_document_requested = $request->input('land_document_requested');
+    $prospect->desired_municipality = $request->input('desired_municipality');
+    $prospect->desired_surface = $request->input('desired_surface');
+    $prospect->financial_simulation = $request->input('financial_simulation');
+    $prospect->simulation_amount = $request->input('simulation_amount');
+    $prospect->simulation_bank = $request->input('simulation_bank');
+    $prospect->simulation_broker = $request->input('simulation_broker');
+    $prospect->desired_rd1_date = $request->input('desired_rd1_date');
+    $prospect->desired_rd1_time = $request->input('desired_rd1_time');
+    $prospect->how_know_company = $request->input('how_know_company');
+    $prospect->interlocutor_appointment = $request->input('interlocutor_appointment');
+    $prospect->exchange_validated_by = $request->input('exchange_validated_by');
+    $prospect->assignment_prospect_rd1_validation = $request->input('assignment_prospect_rd1_validation');
+
+    $prospect->save();
+
+    return \redirect()->route('prospect.index')->withSuccess('Propect updated successfully');
   }
 
   /**
@@ -153,8 +197,12 @@ class ProspectController extends Controller
    * @param  \App\Models\Prospect  $prospect
    * @return \Illuminate\Http\Response
    */
-  public function destroy(Prospect $prospect)
+  public function destroy($id)
   {
     //
+
+    $prospect = Prospect::find($id);
+    $prospect->delete();
+    return \redirect()->route('prospect.index')->withSuccess("User removed successfully");
   }
 }

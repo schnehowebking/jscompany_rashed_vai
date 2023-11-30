@@ -33,14 +33,6 @@
 
         <!-- Default Icons Wizard -->
         <div class="col-12">
-
-            @if (session('success'))
-                <div class="alert alert-success">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-
             <form action="{{ route('prospect.store') }}" method="POST">
                 @csrf
                 <!-- Prospect Details -->
@@ -61,7 +53,7 @@
                         <div class="col-md-6">
                             <label class="form-label" for="email">Genre</label>
                             <select class="form-control" name="genre" id="genre" required>
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="MR.">MR.</option>
                                 <option value="Mrs.">Mrs.</option>
                                 <option value="Ste.">Ste.</option>
@@ -75,7 +67,8 @@
                         <div class="col-md-6">
                             <label class="form-label" for="desired_work">Desired Work</label>
                             <select class="form-control" name="desired_work" id="desired_work" required>
-                                <option value="V.E.FA">V.E.FA</option>
+                              <option value="">Select one</option>
+                              <option value="V.E.FA">V.E.FA</option>
                                 <option value="M.I NEUVE">M.I NEUVE</option>
                                 <option value="RENO. REHA. AMEN.">RENO. REHA. AMEN.</option>
                                 <option value="Building">Building</option>
@@ -100,7 +93,7 @@
                         <div class="col-md-6">
                             <label class="form-label" for="has_land">DO YOU HAVE A LAND?</label>
                             <select class="form-control" name="has_land" id="has_land">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -108,7 +101,8 @@
                         <div class="col-md-6">
                             <label class="form-label" for="land_municipality">Which municipality</label>
                             <select class="form-control" name="land_municipality" id="land_municipality">
-                                <option value="Awala-Yalimapo">Awala-Yalimapo</option>
+                              <option value="">Select one</option>
+                              <option value="Awala-Yalimapo">Awala-Yalimapo</option>
                                 <option value="Camopi">Camopi</option>
                                 <option value="Grand-Santi">Grand-Santi</option>
                                 <option value="Iracoubo">Iracoubo</option>
@@ -134,7 +128,7 @@
                             <label class="form-label" for="land_document_requested">Send the parcel plan or any
                                 type of doc.</label>
                             <select name="land_document_requested" class="form-control">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
 
@@ -143,7 +137,8 @@
                         <div class="col-md-6">
                             <label class="form-label" for="desired_municipality">Which Cunicipality</label>
                             <select name="desired_municipality" class="form-control">
-                                <option value="Awala-Yalimapo">Awala-Yalimapo</option>
+                              <option value="">Select One</option>
+                              <option value="Awala-Yalimapo">Awala-Yalimapo</option>
                                 <option value="Camopi">Camopi</option>
                                 <option value="Grand-Santi">Grand-Santi</option>
                                 <option value="Iracoubo">Iracoubo</option>
@@ -176,7 +171,7 @@
                             <label class="form-label" for="financial_simulation">DO YOU HAVE A FINANCIAL
                                 SIMULATION?</label>
                             <select name="financial_simulation" class="form-control">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
@@ -191,7 +186,7 @@
                         <div class="col-md-4 col-sm-6">
                             <label class="form-label" for="simulation_bank">What is the bank?</label>
                             <select class="form-control " name="simulation_bank">
-                                <option value="">choose</option>
+                                <option value="">Select One</option>
                                 <option value="BRED-Banque Populaire">BRED-Banque Populaire</option>
                                 <option value="Savings Bank">Savings Bank</option>
                                 <option value="Caisse de Crédit Mutuel">Caisse de Crédit Mutuel</option>
@@ -219,7 +214,7 @@
                         <div class="col-md-3">
                             <label class="form-label" for="how_know_company">HOW DO YOU KNOW OUR COMPANY?</label>
                             <select class="form-control" name="how_know_company">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="Whats app">Whats app</option>
                                 <option value="Telephone">Telephone</option>
                                 <option value="Instagrams">Instagrams</option>
@@ -244,7 +239,7 @@
                         <div class="col-md-4">
                             <label class="form-label" for="interlocutor_appointment">Appointment With</label>
                             <select class="form-control " name="interlocutor_appointment">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="secretariat">Secretariat</option>
                                 <option value="respVente">Resp.Vente</option>
                                 <option value="seller1">Seller 1</option>
@@ -262,7 +257,7 @@
                         <div class="col-md-4">
                             <label class="form-label" for="exchange_validated_by">exchange_validated_by</label>
                             <select class="form-control" name="exchange_validated_by">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="secretariat">Secretariat</option>
                                 <option value="respVente">Resp.Vente</option>
                                 <option value="seller1">Seller 1</option>
@@ -281,7 +276,7 @@
                             <label class="form-label" for="assignment_prospect_rd1_validation">VALIDATE THE
                                 ASSIGNMENT PROSPECT -RD 1</label>
                             <select class="form-control" name="assignment_prospect_rd1_validation">
-                                <option value="">Choose</option>
+                                <option value="">Select One</option>
                                 <option value="1">Yes</option>
                                 <option value="0">No</option>
                             </select>
