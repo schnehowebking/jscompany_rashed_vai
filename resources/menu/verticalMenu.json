@@ -7,10 +7,10 @@
       "url": "/"
     },
     {
-      "name": "New Application",
-      "icon": "menu-icon tf-icons bx bx-cart-add",
+      "name": "Prospect",
+      "icon": "menu-icon tf-icons bx bx-user",
       "slug": "prospect",
-      "url": "prospect/create"
+      "url": "prospect"
     },
     {
       "name": "Customers",
