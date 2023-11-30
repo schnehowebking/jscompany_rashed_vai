@@ -9,8 +9,8 @@
     {
       "name": "New Application",
       "icon": "menu-icon tf-icons bx bx-cart-add",
-      "slug": "application",
-      "url": "application"
+      "slug": "prospect",
+      "url": "prospect"
     },
     {
       "name": "Customers",

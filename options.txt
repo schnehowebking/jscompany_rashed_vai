@@ -8,6 +8,20 @@
 <option value="JUMELLÉE">JUMELLÉE</option>
 
 
+<option value="Whats app">Whats app</option>
+    <option value="Telephone">Telephone</option>
+    <option value="Instagrams">Instagrams</option>
+    <option value="Facebook">Facebook</option>
+    <option value="Cinema">Cinema</option>
+    <option value="Paper ad">Paper ad</option>
+    <option value="Sign">Sign</option>
+    <option value="4x3 panel">4x3 panel</option>
+    <option value="Construction panel">Construction panel</option>
+    <option value="Word of mouth">Word of mouth</option>
+    <option value="Sponsorship">Sponsorship</option>
+    <option value="Others">Others (to be defined)</option>
+
+
 
 
 <option value="RES.PRINC.">RES.PRINC.</option>

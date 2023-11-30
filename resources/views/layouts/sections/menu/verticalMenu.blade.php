@@ -2,7 +2,7 @@
     $configData = Helper::appClasses();
 @endphp
 
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+<aside id="layout-menu" class="layout-menu  menu bg-menu-theme">
 
     <!-- ! Hide app brand if navbar-full -->
     @if (!isset($navbarFull))
