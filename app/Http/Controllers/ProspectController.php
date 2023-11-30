@@ -23,7 +23,7 @@ class ProspectController extends Controller
   public function index()
   {
     //
-    return view('backend.prospect.create');
+    return view('backend.prospect.index');
   }
 
   /**
@@ -34,6 +34,7 @@ class ProspectController extends Controller
   public function create()
   {
     //
+    return view('backend.prospect.create');
   }
 
   /**
@@ -46,60 +47,70 @@ class ProspectController extends Controller
   {
     //
     // Validate the form data
-    $validatedData = $request->validate([
-      'name' => 'required|string',
-      'first_name' => 'required|string',
-      'genre' => 'required|string',
-      'telephone_prospect_1' => 'required|string',
-      'desired_work' => 'required|string',
-      'desired_house_type' => 'string|nullable',
-      'has_land' => 'string|nullable',
-      'land_municipality' => 'string|nullable',
-      'land_document_requested' => 'string|nullable',
-      'desired_municipality' => 'string|nullable',
-      'desired_surface' => 'string|nullable',
-      'financial_simulation' => 'string|nullable',
-      'simulation_amount' => 'numeric|nullable',
-      'simulation_bank' => 'string|nullable',
-      'simulation_broker' => 'string|nullable',
-      'desired_rd1_date' => 'string|nullable',
-      'desired_rd1_time' => 'string|nullable',
-      'how_know_company' => 'string|nullable',
-      'how_know_company_details' => 'string|nullable',
-      'interlocutor_appointment' => 'string|nullable',
-      'exchange_validated_by' => 'string|nullable',
-      'assignment_prospect_rd1_validation' => 'string|nullable',
-    ]);
 
-    $prospect = new Prospect();
+    // $validatedData = $request->validate([
+    //   'name' => 'required|string|max:255',
+    //   'first_name' => 'required|string|max:255',
+    //   'genre' => 'required|string|max:255',
+    //   'telephone_prospect_1' => 'required|string|max:255',
+    //   'desired_work' => 'required|string|max:255',
+    //   'desired_house_type' => 'nullable|string|max:255',
+    //   'has_land' => 'nullable|boolean',
+    //   'land_municipality' => 'nullable|string|max:255',
+    //   'land_document_requested' => 'nullable|string|max:255',
+    //   'desired_municipality' => 'nullable|string|max:255',
+    //   'desired_surface' => 'nullable|string|max:255',
+    //   'financial_simulation' => 'nullable|string|max:255',
+    //   'simulation_amount' => 'nullable|numeric',
+    //   'simulation_bank' => 'nullable|string|max:255',
+    //   'simulation_broker' => 'nullable|string|max:255',
+    //   'desired_rd1_date' => 'nullable|date',
+    //   'desired_rd1_time' => 'nullable|string|max:255',
+    //   'how_know_company' => 'nullable|string|max:255',
+    //   'how_know_company_details' => 'nullable|string|max:255',
+    //   'interlocutor_appointment' => 'nullable|string|max:255',
+    //   'exchange_validated_by' => 'nullable|string|max:255',
+    //   'assignment_prospect_rd1_validation' => 'nullable|string|max:255',
+    // ]);
 
-    $prospect->name = $request->name;
-    $prospect->first_name = $request->first_name;
-    $prospect->genre = $request->genre;
-    $prospect->telephone_prospect_1 = $request->telephone_prospect_1;
-    $prospect->desired_work = $request->desired_work;
-    $prospect->desired_house_type = $request->desired_house_type;
-    $prospect->has_land = $request->has_land;
-    $prospect->land_municipality = $request->land_municipality;
-    $prospect->land_document_requested = $request->land_document_requested;
-    $prospect->desired_municipality = $request->desired_municipality;
-    $prospect->desired_surface = $request->desired_surface;
-    $prospect->financial_simulation = $request->financial_simulation;
-    $prospect->simulation_amount = $request->simulation_amount;
-    $prospect->simulation_bank = $request->simulation_bank;
-    $prospect->simulation_broker = $request->simulation_broker;
-    $prospect->desired_rd1_date = $request->desired_rd1_date;
-    $prospect->desired_rd1_time = $request->desired_rd1_time;
-    $prospect->how_know_company = $request->how_know_company;
-    $prospect->how_know_company_details = $request->how_know_company_details;
-    $prospect->interlocutor_appointment = $request->interlocutor_appointment;
-    $prospect->exchange_validated_by = $request->exchange_validated_by;
+    // $prospect = Prospect::create($validatedData);
 
 
-    dd($prospect->name);
-    $prospect->save();
+    // if ($validatedData) {
+      $prospect = new Prospect();
+      $prospect->name = $request['name'];
+      $prospect->first_name = $request['first_name'];
+      $prospect->genre = $request['genre'];
+      $prospect->telephone_prospect_1 = $request['telephone_prospect_1'];
+      $prospect->desired_work = $request['desired_work'];
+      $prospect->desired_house_type = $request['desired_house_type'];
+      $prospect->has_land = $request['has_land'];
+      $prospect->land_municipality = $request['land_municipality'];
+      $prospect->land_document_requested = $request['land_document_requested'];
+      $prospect->desired_municipality = $request['desired_municipality'];
+      $prospect->desired_surface = $request['desired_surface'];
+      $prospect->financial_simulation = $request['financial_simulation'];
+      $prospect->simulation_amount = $request['simulation_amount'];
+      $prospect->simulation_bank = $request['simulation_bank'];
+      $prospect->simulation_broker = $request['simulation_broker'];
+      $prospect->desired_rd1_date = $request['desired_rd1_date'];
+      $prospect->desired_rd1_time = $request['desired_rd1_time'];
+      $prospect->how_know_company = $request['how_know_company'];
+      $prospect->interlocutor_appointment = $request['interlocutor_appointment'];
+      $prospect->exchange_validated_by = $request['exchange_validated_by'];
+      $prospect->assignment_prospect_rd1_validation = $request['assignment_prospect_rd1_validation'];
 
-    return redirect()->back()->with('success', 'Prospect created successfully');
+      $prospect->save();
+      // dd($request->all());
+
+      return redirect()
+        ->back()
+        ->with('success', 'Prospect created successfully');
+    // // } else {
+    //   return redirect()
+    //     ->back()
+    //     ->with('success', 'Error');
+    // }
   }
 
   /**

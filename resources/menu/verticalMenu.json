@@ -10,7 +10,7 @@
       "name": "New Application",
       "icon": "menu-icon tf-icons bx bx-cart-add",
       "slug": "prospect",
-      "url": "prospect"
+      "url": "prospect/create"
     },
     {
       "name": "Customers",

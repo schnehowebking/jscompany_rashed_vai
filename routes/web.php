@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\backend\CustomerController;
+// use App\Http\Controllers\backend\CustomerController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Artisan;
 

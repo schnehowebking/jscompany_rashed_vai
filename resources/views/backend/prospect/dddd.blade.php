@@ -1,37 +1,16 @@
-@extends('layouts/layoutMaster')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('title', 'Prospect - Forms')
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ddd</title>
+</head>
 
-@section('vendor-style')
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
-    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
+<body>
 
-
-@endsection
-
-@section('vendor-script')
-    <script src="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.js') }}"></script>
-    <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
-
-@endsection
-
-@section('page-script')
-    <script src="{{ asset('assets/js/form-wizard-icons.js') }}"></script>
-
-@endsection
-
-@section('content')
-    <h4 class="py-3 breadcrumb-wrapper mb-4">
-        <span class="text-muted fw-light">Prospect /</span> Create
-    </h4>
-
-    <!-- Default -->
     <div class="row gy-4">
-
-
-        <!-- Default Icons Wizard -->
         <div class="col-12">
 
             @if (session('success'))
@@ -39,9 +18,7 @@
                     {{ session('success') }}
                 </div>
             @endif
-
-
-            <form action="{{ route('prospect.store') }}" method="POST">
+            <form action="{{ route('prospect.store') }}" method="post">
                 @csrf
                 <!-- Prospect Details -->
                 <div id="" class="content">
@@ -210,7 +187,7 @@
                     <div class="row g-3">
                         <div class="col-md-3">
                             <label class="form-label" for="desired_rd1_date">DESIRED DATE OF RD1</label>
-                            <input type="date" class="form-control datepicker" name="desired_rd1_date">
+                            <input type="date" class="form-control datepicker" name="desired_rd1_date[]">
                         </div>
                         <div class="col-md-3">
                             <label class="form-label" for="desired_rd1_time">Desired Time</label>
@@ -292,7 +269,7 @@
 
                         <div class="col-12 d-flex justify-content-between">
 
-                            <button onclick="submitformdata();" class="btn btn-success">Submit</button>
+                            <button type="submit" class="btn btn-success btn-submit">Submit</button>
                         </div>
                     </div>
                 </div>
@@ -311,16 +288,7 @@
 
     </div>
 
-    <script>
-        submitformdata() {
-            document.addEventListerner('click', function(e) {
-                e.preventDefault();
-                $.ajax({
-                    url: '/prospect/store',
-                    type: 'POST',
-                })
-            });
 
-        };
-    </script>
-@endsection
+</body>
+
+</html>

@@ -12,8 +12,9 @@ Route::get('test', [CustomerController::class, 'test']);
 
 Route::middleware(['auth'])->group(function () {
   Route::get('/', [AdminController::class, 'dashboard'])->name('dashboard');
-  Route::get('prospect', [ProspectController::class, 'index'])->name('prospect.create');
-  Route::post('/prospects/store', [ProspectController::class, 'store'])->name('prospect.store');
+  Route::get('prospect', [ProspectController::class, 'index'])->name('prospect.index');
+  Route::get('prospect/create', [ProspectController::class, 'create'])->name('prospect.create');
+  Route::post('prospect/store', [ProspectController::class, 'store'])->name('prospect.store');
 
   Route::get('rd2brower', [Rd2BrowerController::class, 'index'])->name('rd2brower.create');
 
