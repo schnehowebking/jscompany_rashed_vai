@@ -23,9 +23,22 @@ class Rd2InterviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($request)
     {
         //
+        if($request->ajax()) {
+          $prospects = DB::table('prospects')->get();
+          return DataTables::of($prospects)
+            ->addIndexColumn()
+            ->addColumn('action', function($prospect) {
+              $html = '<a href="'.route('prospect.edit', $prospect->id).'" class="me-1"><i class="bx bx-edit"></i></a>';
+              return $html;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+         };
+
+        return \view('backend.rd2interviews.index');
     }
 
     /**
@@ -36,6 +49,7 @@ class Rd2InterviewController extends Controller
     public function create()
     {
         //
+        return view('backend.rd2interviews.create');
     }
 
     /**

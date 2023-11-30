@@ -6,7 +6,8 @@ use App\Http\Controllers\backend\UsersController;
 use App\Http\Controllers\backend\SettingController;
 use App\Http\Controllers\backend\CustomerController;
 use App\Http\Controllers\ProspectController;
-use App\Http\Controllers\Rd2BrowerController;
+// use App\Http\Controllers\Rd2BrowerController;
+use App\Http\Controllers\Rd2InterviewController;
 
 Route::get('test', [CustomerController::class, 'test']);
 
@@ -18,7 +19,8 @@ Route::middleware(['auth'])->group(function () {
   Route::get('prospect/edit/{id}', [ProspectController::class, 'edit'])->name('prospect.edit');
   Route::put('prospect/edit/{id}', [ProspectController::class, 'update'])->name('prospect.update');
 
-  Route::resource('rd2brower', Rd2BrowerController::class);
+  // Route::resource('rd2brower', Rd2BrowerController::class);
+  Route::resource('rd2interviews', Rd2InterviewController::class);
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');
