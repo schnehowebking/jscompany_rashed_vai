@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class ProjectFinancing extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    public function prospect()
+    {
+        return $this->belongsTo(Prospect::class);
+    }
 }

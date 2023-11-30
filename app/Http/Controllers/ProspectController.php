@@ -6,13 +6,7 @@ use App\Models\Prospect;
 
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
-// use App\Models\Rd_2_Caller;
-// use App\Models\Rd_2_brower;
-// use App\Models\FinancingCondition;
-// use App\Models\HouseholdDuctment;
-// use App\Models\HouseholdResourceCapacity;
-// use App\Models\LandChargeInfo;
-// use App\Models\ProjectFinancing;
+
 
 use Illuminate\Http\Request;
 

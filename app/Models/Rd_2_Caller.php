@@ -7,5 +7,16 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rd_2_Caller extends Model
 {
-    use HasFactory;
+  use HasFactory;
+
+  protected $guarded = [];
+
+  public function prospect()
+  {
+    return $this->belongsTo(Prospect::class);
+  }
+  public function rd2brower()
+  {
+    return $this->hasOne(Rd_2_brower::class);
+  }
 }

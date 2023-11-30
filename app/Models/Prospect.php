@@ -12,4 +12,35 @@ class Prospect extends Model
   protected $table = 'prospects';
 
   protected $guarded = [];
+
+  // relationships with other models
+  public function rd2Caller()
+  {
+    return $this->hasOne(Rd_2_Caller::class);
+  }
+
+  public function landChargeInfo()
+  {
+    return $this->hasOne(LandChargeInfo::class);
+  }
+
+  public function householdResourceCapacity()
+  {
+    return $this->hasOne(HouseholdResourceCapacity::class);
+  }
+
+  public function householdDocument()
+  {
+    return $this->hasOne(HouseholdDuctment::class);
+  }
+
+  public function financingCondition()
+  {
+    return $this->hasOne(FinancingCondition::class);
+  }
+
+  public function projectFinancing()
+  {
+    return $this->hasOne(ProjectFinancing::class);
+  }
 }

@@ -1,4 +1,4 @@
-Prospects Table(RD1Interview Table):
+Prospect (Model):
 
 id (Primary Key)
 behalf_name
@@ -30,7 +30,7 @@ assignment_prospect_rd1_validation
   
 
 
-RD2CallerInformation Table:
+Rd_2_Caller (Model):
 
 id (Primary Key)
 prospect_id (Foreign Key referencing Prospects Table)
@@ -66,7 +66,7 @@ personal_contribution
   
 
 
-RD2CoBorrowerInformation Table:
+Rd_2_brower (Model):
 
 id (Primary Key)
 caller_id (Foreign Key referencing RD2CallerInformation Table)
@@ -102,7 +102,7 @@ personal_contribution
   
 
 
-LandChargeInformation Table:
+LandChargeInfo (Model):
 
 id (Primary Key)
 prospect_id (Foreign Key referencing Prospects Table)
@@ -124,7 +124,7 @@ venal_value_of_land
   
 
 
-HouseholdResourceCapacity Table:
+HouseholdResourceCapacity (Model):
 
 id (Primary Key)
 prospect_id (Foreign Key referencing Prospects Table)
@@ -137,7 +137,7 @@ financial_capacity_of_household
   
 
 
-HouseholdDuctment Table:
+HouseholdDuctment (Model):
 
 id (Primary Key)
 prospect_id (Foreign Key referencing Prospects Table)
@@ -150,7 +150,7 @@ capacity
   
 
 
-FinancingCondition Table:
+FinancingCondition (Model):
 
 id (Primary Key)
 prospect_id (Foreign Key referencing Prospects Table)
@@ -164,7 +164,7 @@ current_credit
   
 
 
-ProjectFinancing Table:
+ProjectFinancing (Model):
 
 id (Primary Key)
 prospect_id (Foreign Key referencing Prospects Table)
