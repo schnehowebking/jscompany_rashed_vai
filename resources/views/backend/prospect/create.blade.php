@@ -43,7 +43,7 @@
 
         <!-- Default Icons Wizard -->
         <div class="col-12">
-          <form action="{{ url('/prospects/store') }}" method="post">
+          <form action="{{ route('prospect.store') }}" method="post">
             @csrf
             <!-- Prospect Details -->
             <div id="" class="content">

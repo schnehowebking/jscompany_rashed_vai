@@ -71,7 +71,7 @@ class ProspectController extends Controller
       'assignment_prospect_rd1_validation' => 'string|nullable',
     ]);
 
-    $prospect = new Prospect($validatedData);
+    $prospect = new Prospect();
 
     $prospect->name = $request->name;
     $prospect->first_name = $request->first_name;
