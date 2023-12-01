@@ -28,8 +28,10 @@
 
         <!-- Default Icons Wizard -->
         <div class="col-12">
-            <form action="{{ route('rd2interviews.store') }}" method="POST">
+            <form action="{{ route('rd2interviews.store', $id) }}" method="POST">
                 @csrf
+                @method('PUT')
+                <input type="hidden" name="prospect_id" value="{{ $id }}">
 
                 <div class="content-header mb-3">
                     <h4 class="mb-0">STEP-1: WEAR INFORMATION AND TEAR</h4>
