@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInita9219aef32d6a056392542cde926f450
+class ComposerStaticInit98920bd3350ffaf33c62cee2500c52c2
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -382,8 +382,8 @@ class ComposerStaticInita9219aef32d6a056392542cde926f450
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -525,8 +525,8 @@ class ComposerStaticInita9219aef32d6a056392542cde926f450
         ),
         'Fruitcake\\Cors\\' => 
         array (
-            0 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
-            1 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
+            0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
+            1 => __DIR__ . '/..' . '/fruitcake/laravel-cors/src',
         ),
         'Faker\\' => 
         array (
@@ -8852,10 +8852,10 @@ class ComposerStaticInita9219aef32d6a056392542cde926f450
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInita9219aef32d6a056392542cde926f450::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInita9219aef32d6a056392542cde926f450::$prefixDirsPsr4;
-            $loader->prefixesPsr0 = ComposerStaticInita9219aef32d6a056392542cde926f450::$prefixesPsr0;
-            $loader->classMap = ComposerStaticInita9219aef32d6a056392542cde926f450::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit98920bd3350ffaf33c62cee2500c52c2::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit98920bd3350ffaf33c62cee2500c52c2::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit98920bd3350ffaf33c62cee2500c52c2::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit98920bd3350ffaf33c62cee2500c52c2::$classMap;
 
         }, null, ClassLoader::class);
     }
