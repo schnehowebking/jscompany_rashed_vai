@@ -19,9 +19,11 @@ Route::middleware(['auth'])->group(function () {
   Route::get('prospect/edit/{id}', [ProspectController::class, 'edit'])->name('prospect.edit');
   Route::put('prospect/edit/{id}', [ProspectController::class, 'update'])->name('prospect.update');
 
-  // Route::resource('rd2brower', Rd2BrowerController::class);
+  Route::resource('rd2brower', Rd2BrowerController::class);
   Route::resource('rd2interviews', Rd2InterviewController::class);
-  Route::get('rd2interviews', [ProspectController::class, 'index'])->name('rd2interviews.index');
+  Route::get('rd2interviews', [Rd2InterviewController::class, 'index'])->name('rd2interviews.index');
+  Route::get('rd2interviews/create/{id}', [Rd2InterviewController::class, 'create'])->name('rd2interviews.create');
+  Route::get('rd2interviews/store', [Rd2InterviewController::class, 'store'])->name('rd2interviews.store');
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');

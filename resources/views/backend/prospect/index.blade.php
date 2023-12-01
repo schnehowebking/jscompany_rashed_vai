@@ -8,7 +8,7 @@
 </h4>
 
 <div class="card">
-  <h5 class="card-header d-flex justify-content-between"><span>Prospect Panel</span> <a href="{{ route('prospect.create') }}">Add New Prospect</a></h5>
+  <h5 class="card-header d-flex justify-content-between"><span>RD2 Interviewed</span> <a href="{{ route('prospect.create') }}">Add New Prospect</a></h5>
   <!--Search Form -->
   <hr class="mt-0">
   <div class="card-datatable table-responsive">
@@ -19,6 +19,7 @@
           <th>Name</th>
           <th>First name</th>
           <th>Telephone</th>
+          <th>Interview Status</th>
           <th>Action</th>
         </tr>
       </thead>
@@ -54,6 +55,12 @@ $(function () {
           {data: 'name', name: 'name'},
           {data: 'first_name', name: 'first_name'},
           {data: 'telephone_prospect_1', name: 'telephone_prospect_1'},
+          {
+              data: 'interviewed',
+              name: 'interviewed',
+              orderable: false,
+              searchable: true
+          },
           {
               data: 'action',
               name: 'action',
