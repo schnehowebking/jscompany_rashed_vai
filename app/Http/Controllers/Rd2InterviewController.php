@@ -6,13 +6,7 @@ use App\Models\Prospect;
 
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
-use App\Models\Rd_2_Caller;
-use App\Models\Rd_2_brower;
-use App\Models\FinancingCondition;
-use App\Models\HouseholdDuctment;
-use App\Models\HouseholdResourceCapacity;
-use App\Models\LandChargeInfo;
-use App\Models\ProjectFinancing;
+
 
 use Illuminate\Http\Request;
 
@@ -61,6 +55,17 @@ class Rd2InterviewController extends Controller
     public function store(Request $request)
     {
         //
+        $prospect = new Prospect();
+        $rd2caller = $prospect->rd2Caller();
+        $rd2brower = $rd2caller->rd2brower();
+        $landChargeInfo = $prospect->landChargeInfo();
+        $householdResourceCapacity = $prospect->householdResourceCapacity();
+        $householdDocument = $prospect->householdDocument();
+        $financingCondition = $prospect->financingCondition();
+        $projectFinancing = $prospect->projectFinancing();
+
+
+
     }
 
     /**
