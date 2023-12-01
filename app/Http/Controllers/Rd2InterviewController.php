@@ -225,7 +225,7 @@ class Rd2InterviewController extends Controller
   {
     //
       $prospect = Prospect::find($id);
-          // rd2 caller
+    // rd2 caller
     $rd2caller = $prospect->rd2Caller();
 
     $rd2caller->prospect_id = $id;
@@ -293,7 +293,7 @@ class Rd2InterviewController extends Controller
     // landChargeInfo
     $landChargeInfo = $prospect->landChargeInfo();
 
-    $landChargeInfo->prospect_id = $request->prospect_id;
+    $landChargeInfo->prospect_id = $id;
     $landChargeInfo->site_address = $request->land_charge_info_site_address;
     $landChargeInfo->site_municipality = $request->land_charge_info_site_municipality;
     $landChargeInfo->geotechnical_study = $request->land_charge_info_geotechnical_study;
@@ -312,7 +312,7 @@ class Rd2InterviewController extends Controller
 
     // householdResourceCapacity
     $householdResourceCapacity = $prospect->householdResourceCapacity();
-    $householdResourceCapacity->prospect_id = $request->prospect_id;
+    $householdResourceCapacity->prospect_id = $id;
     $householdResourceCapacity->annual_tax_income = $request->household_resource_annual_tax_income;
     $householdResourceCapacity->annual_rental_income_before_abatement = $request->household_resource_annual_rental_income_before_abatement;
     $householdResourceCapacity->annual_rental_income_after_abatement = $request->household_resource_annual_rental_income_after_abatement;
@@ -323,7 +323,7 @@ class Rd2InterviewController extends Controller
     // householdDocument
     $householdDocument = $prospect->householdDocument();
 
-    $householdDocument->prospect_id = $request->prospect_id;
+    $householdDocument->prospect_id = $id;
     $householdDocument->eligible_debt_before_credit = $request->household_document_eligible_debt_before_credit;
     $householdDocument->current_credit = $request->household_document_current_credit;
     $householdDocument->debt_with_monthly_credit = $request->household_document_debt_with_monthly_credit;
@@ -333,7 +333,7 @@ class Rd2InterviewController extends Controller
 
     // financingCondition
     $financingCondition = $prospect->financingCondition();
-    $financingCondition->prospect_id = $request->financing_condition_prospect_id;
+    $financingCondition->prospect_id = $id;
     $financingCondition->loan_rate = $request->financing_condition_loan_rate;
     $financingCondition->insurance_rate = $request->financing_condition_insurance_rate;
     $financingCondition->teag = $request->financing_condition_teag;
@@ -344,7 +344,7 @@ class Rd2InterviewController extends Controller
 
     // projectFinancing
     $projectFinancing = $prospect->projectFinancing();
-    $projectFinancing->prospect_id =  $request->prospect_id;
+    $projectFinancing->prospect_id =  $id;
     $projectFinancing->contribution = $request->project_financing_contribution;
     $projectFinancing->loan_at_zero_rate = $request->project_financing_loan_at_zero_rate;
     $projectFinancing->employer_loan = $request->project_financing_employer_loan;
