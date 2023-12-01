@@ -51,7 +51,7 @@ class Rd2InterviewController extends Controller
   public function store(Request $request ,$id)
   {
     //
-    $prospect = new Prospect();
+    $prospect = Prospect::find($id);
     // rd2 caller
     $rd2caller = $prospect->rd2Caller();
 
