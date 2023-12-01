@@ -1,8 +1,5 @@
 <?php
 
-
-
-
 namespace App;
 
 use Twilio\Rest\Client;

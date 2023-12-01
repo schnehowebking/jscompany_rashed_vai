@@ -20,14 +20,16 @@ class Rd2InterviewController extends Controller
   {
     //
     if ($request->ajax()) {
-      $prospects = DB::table('prospects')->where('interviewed', 1)->get();
+      $prospects = DB::table('prospects')
+        ->where('interviewed', 1)
+        ->get();
       return DataTables::of($prospects)
         ->addIndexColumn()
 
         ->make(true);
     }
 
-    return \view('backend.rd2interviews.index');
+    return view('backend.rd2interviews.index');
   }
 
   /**
@@ -39,7 +41,7 @@ class Rd2InterviewController extends Controller
   {
     //
 
-    return view('backend.rd2interviews.create', compact('id') );
+    return view('backend.rd2interviews.create', compact('id'));
   }
 
   /**
@@ -48,7 +50,7 @@ class Rd2InterviewController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request ,$id)
+  public function store(Request $request, $id)
   {
     //
     $prospect = Prospect::find($id);
@@ -116,7 +118,6 @@ class Rd2InterviewController extends Controller
     $rd2brower->family_situation = $request->co_borrower_info_family_situation;
     $rd2brower->personal_contribution = $request->co_borrower_info_personal_contribution;
 
-
     // landChargeInfo
     $landChargeInfo = $prospect->landChargeInfo();
 
@@ -136,16 +137,18 @@ class Rd2InterviewController extends Controller
     $landChargeInfo->price_per_square_meter = $request->land_charge_info_price_per_square_meter;
     $landChargeInfo->venal_value_of_land = $request->land_charge_info_venal_value_of_land;
 
-
     // householdResourceCapacity
     $householdResourceCapacity = $prospect->householdResourceCapacity();
     $householdResourceCapacity->prospect_id = $id;
     $householdResourceCapacity->annual_tax_income = $request->household_resource_annual_tax_income;
-    $householdResourceCapacity->annual_rental_income_before_abatement = $request->household_resource_annual_rental_income_before_abatement;
-    $householdResourceCapacity->annual_rental_income_after_abatement = $request->household_resource_annual_rental_income_after_abatement;
-    $householdResourceCapacity->potential_help_financial_assistance = $request->household_resource_potential_help_financial_assistance;
-    $householdResourceCapacity->financial_capacity_of_household = $request->household_resource_financial_capacity_of_household;
-
+    $householdResourceCapacity->annual_rental_income_before_abatement =
+      $request->household_resource_annual_rental_income_before_abatement;
+    $householdResourceCapacity->annual_rental_income_after_abatement =
+      $request->household_resource_annual_rental_income_after_abatement;
+    $householdResourceCapacity->potential_help_financial_assistance =
+      $request->household_resource_potential_help_financial_assistance;
+    $householdResourceCapacity->financial_capacity_of_household =
+      $request->household_resource_financial_capacity_of_household;
 
     // householdDocument
     $householdDocument = $prospect->householdDocument();
@@ -157,7 +160,6 @@ class Rd2InterviewController extends Controller
     $householdDocument->debt_with_annual_credit = $request->household_document_debt_with_annual_credit;
     $householdDocument->capacity = $request->household_document_capacity;
 
-
     // financingCondition
     $financingCondition = $prospect->financingCondition();
     $financingCondition->prospect_id = $id;
@@ -168,10 +170,9 @@ class Rd2InterviewController extends Controller
     $financingCondition->duration_in_months = $request->financing_condition_duration_in_months;
     $financingCondition->current_credit = $request->financing_condition_current_credit;
 
-
     // projectFinancing
     $projectFinancing = $prospect->projectFinancing();
-    $projectFinancing->prospect_id =  $id;
+    $projectFinancing->prospect_id = $id;
     $projectFinancing->contribution = $request->project_financing_contribution;
     $projectFinancing->loan_at_zero_rate = $request->project_financing_loan_at_zero_rate;
     $projectFinancing->employer_loan = $request->project_financing_employer_loan;
@@ -183,7 +184,6 @@ class Rd2InterviewController extends Controller
     $projectFinancing->debt = $request->project_financing_debt;
     $projectFinancing->debt_with_credit = $request->project_financing_debt_with_credit;
     $projectFinancing->total_financing_of_project = $request->project_financing_total_financing_of_project;
-
 
     $prospect->save();
   }
@@ -197,8 +197,8 @@ class Rd2InterviewController extends Controller
   public function show($id)
   {
     //
-    $prospect = Prospect::find($id);
-    return response()->json($prospect);
+    // $prospect = Prospect::find($id);
+    // return response()->json($prospect);
   }
 
   /**
@@ -224,7 +224,7 @@ class Rd2InterviewController extends Controller
   public function update(Request $request, $id)
   {
     //
-      $prospect = Prospect::find($id);
+    $prospect = Prospect::find($id);
     // rd2 caller
     $rd2caller = $prospect->rd2Caller();
 
@@ -289,7 +289,6 @@ class Rd2InterviewController extends Controller
     $rd2brower->family_situation = $request->co_borrower_info_family_situation;
     $rd2brower->personal_contribution = $request->co_borrower_info_personal_contribution;
 
-
     // landChargeInfo
     $landChargeInfo = $prospect->landChargeInfo();
 
@@ -309,16 +308,18 @@ class Rd2InterviewController extends Controller
     $landChargeInfo->price_per_square_meter = $request->land_charge_info_price_per_square_meter;
     $landChargeInfo->venal_value_of_land = $request->land_charge_info_venal_value_of_land;
 
-
     // householdResourceCapacity
     $householdResourceCapacity = $prospect->householdResourceCapacity();
     $householdResourceCapacity->prospect_id = $id;
     $householdResourceCapacity->annual_tax_income = $request->household_resource_annual_tax_income;
-    $householdResourceCapacity->annual_rental_income_before_abatement = $request->household_resource_annual_rental_income_before_abatement;
-    $householdResourceCapacity->annual_rental_income_after_abatement = $request->household_resource_annual_rental_income_after_abatement;
-    $householdResourceCapacity->potential_help_financial_assistance = $request->household_resource_potential_help_financial_assistance;
-    $householdResourceCapacity->financial_capacity_of_household = $request->household_resource_financial_capacity_of_household;
-
+    $householdResourceCapacity->annual_rental_income_before_abatement =
+      $request->household_resource_annual_rental_income_before_abatement;
+    $householdResourceCapacity->annual_rental_income_after_abatement =
+      $request->household_resource_annual_rental_income_after_abatement;
+    $householdResourceCapacity->potential_help_financial_assistance =
+      $request->household_resource_potential_help_financial_assistance;
+    $householdResourceCapacity->financial_capacity_of_household =
+      $request->household_resource_financial_capacity_of_household;
 
     // householdDocument
     $householdDocument = $prospect->householdDocument();
@@ -330,7 +331,6 @@ class Rd2InterviewController extends Controller
     $householdDocument->debt_with_annual_credit = $request->household_document_debt_with_annual_credit;
     $householdDocument->capacity = $request->household_document_capacity;
 
-
     // financingCondition
     $financingCondition = $prospect->financingCondition();
     $financingCondition->prospect_id = $id;
@@ -341,10 +341,9 @@ class Rd2InterviewController extends Controller
     $financingCondition->duration_in_months = $request->financing_condition_duration_in_months;
     $financingCondition->current_credit = $request->financing_condition_current_credit;
 
-
     // projectFinancing
     $projectFinancing = $prospect->projectFinancing();
-    $projectFinancing->prospect_id =  $id;
+    $projectFinancing->prospect_id = $id;
     $projectFinancing->contribution = $request->project_financing_contribution;
     $projectFinancing->loan_at_zero_rate = $request->project_financing_loan_at_zero_rate;
     $projectFinancing->employer_loan = $request->project_financing_employer_loan;
@@ -356,7 +355,6 @@ class Rd2InterviewController extends Controller
     $projectFinancing->debt = $request->project_financing_debt;
     $projectFinancing->debt_with_credit = $request->project_financing_debt_with_credit;
     $projectFinancing->total_financing_of_project = $request->project_financing_total_financing_of_project;
-
 
     $prospect->save();
   }
