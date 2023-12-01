@@ -35,10 +35,11 @@ class Rd2InterviewController extends Controller
    *
    * @return \Illuminate\Http\Response
    */
-  public function create()
+  public function create($id)
   {
     //
-    return view('backend.rd2interviews.create');
+
+    return view('backend.rd2interviews.create', compact('id') );
   }
 
   /**
@@ -47,14 +48,14 @@ class Rd2InterviewController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request)
+  public function store(Request $request ,$id)
   {
     //
     $prospect = new Prospect();
     // rd2 caller
     $rd2caller = $prospect->rd2Caller();
 
-    $rd2caller->prospect_id = $request->prospect_id;
+    $rd2caller->prospect_id = $id;
     $rd2caller->name_or_ste = $request->caller_info_name_or_ste;
     $rd2caller->first_name = $request->caller_info_first_name;
     $rd2caller->current_address = $request->caller_info_current_address;
