@@ -6,13 +6,7 @@ use App\Models\Prospect;
 
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
-use App\Models\Rd_2_Caller;
-use App\Models\Rd_2_brower;
-use App\Models\FinancingCondition;
-use App\Models\HouseholdDuctment;
-use App\Models\HouseholdResourceCapacity;
-use App\Models\LandChargeInfo;
-use App\Models\ProjectFinancing;
+
 
 use Illuminate\Http\Request;
 
@@ -23,9 +17,22 @@ class Rd2InterviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($request)
     {
         //
+        if($request->ajax()) {
+          $prospects = DB::table('prospects')->get();
+          return DataTables::of($prospects)
+            ->addIndexColumn()
+            ->addColumn('action', function($prospect) {
+              $html = '<a href="'.route('prospect.edit', $prospect->id).'" class="me-1"><i class="bx bx-edit"></i></a>';
+              return $html;
+            })
+            ->rawColumns(['action'])
+            ->make(true);
+         };
+
+        return \view('backend.rd2interviews.index');
     }
 
     /**
@@ -36,6 +43,7 @@ class Rd2InterviewController extends Controller
     public function create()
     {
         //
+        return view('backend.rd2interviews.create');
     }
 
     /**
@@ -47,6 +55,17 @@ class Rd2InterviewController extends Controller
     public function store(Request $request)
     {
         //
+        $prospect = new Prospect();
+        $rd2caller = $prospect->rd2Caller();
+        $rd2brower = $rd2caller->rd2brower();
+        $landChargeInfo = $prospect->landChargeInfo();
+        $householdResourceCapacity = $prospect->householdResourceCapacity();
+        $householdDocument = $prospect->householdDocument();
+        $financingCondition = $prospect->financingCondition();
+        $projectFinancing = $prospect->projectFinancing();
+
+
+
     }
 
     /**

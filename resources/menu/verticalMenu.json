@@ -13,11 +13,10 @@
       "url": "prospect"
     },
     {
-      "name": "Customers",
+      "name": "RD2 Interviews",
       "icon": "menu-icon tf-icons bx bx-user",
-      "slug": "customers",
-      "url": "customers",
-      "role": "admin,finance"
+      "slug": "rd2interviews",
+      "url": "rd2interviews/create"
     },
     {
       "name": "Administrative",
