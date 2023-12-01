@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TwilioHelper;
 use App\Models\Rd_2_brower;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -91,5 +92,11 @@ class Rd2BrowerController extends Controller
     public function destroy(Rd_2_brower $rd_2_brower)
     {
         //
+    }
+
+    public function testSms() {
+      $twlo = new TwilioHelper();
+      $twlo->sendSms('+8801890010841', 'test');
+      return $twlo;
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Str;
 use ReflectionFunction;
+use ReflectionMethod;
 
 class Helper
 {
@@ -54,6 +55,36 @@ class Helper
     }
 
     /**
+     * Gets the parameter of a callable thing (from is_callable) and returns it's arguments using reflection.
+     *
+     * @param  callable  $callable
+     * @return \ReflectionParameter[]
+     *
+     * @throws \ReflectionException
+     * @throws \InvalidArgumentException
+     */
+    private static function reflectCallableParameters($callable)
+    {
+        /*
+        loosely after https://github.com/technically-php/callable-reflection/blob/main/src/CallableReflection.php#L72-L86.
+        Licence is compatible, both project use MIT
+        */
+        if ($callable instanceof Closure) {
+            $reflection = new ReflectionFunction($callable);
+        } elseif (is_string($callable) && function_exists($callable)) {
+            $reflection = new ReflectionFunction($callable);
+        } elseif (is_string($callable) && str_contains($callable, '::')) {
+            $reflection = new ReflectionMethod($callable);
+        } elseif (is_object($callable) && method_exists($callable, '__invoke')) {
+            $reflection = new ReflectionMethod($callable, '__invoke');
+        } else {
+            throw new \InvalidArgumentException('argument is not callable or the code is wrong');
+        }
+
+        return $reflection->getParameters();
+    }
+
+    /**
      * Determines if content is callable or blade string, processes and returns.
      *
      * @param  mixed  $content  Pre-processed content
@@ -69,15 +100,20 @@ class Helper
             return static::compileBlade($content, static::getMixedValue($data, $param));
         }
 
-        if ($content instanceof Closure) {
-            $reflection = new ReflectionFunction($content);
-            $arguments = $reflection->getParameters();
+        if (is_callable($content)) {
+            $arguments = self::reflectCallableParameters($content);
 
             if (count($arguments) > 0) {
                 return app()->call($content, [$arguments[0]->name => $param]);
             }
 
             return $content($param);
+        }
+
+        if (is_array($content)) {
+            [$view, $viewData] = $content;
+
+            return static::compileBlade($view, static::getMixedValue($data, $param) + $viewData);
         }
 
         return $content;
@@ -166,12 +202,29 @@ class Helper
      */
     public static function convertToArray($row, $filters = [])
     {
+        if (Arr::get($filters, 'ignore_getters') && is_object($row) && method_exists($row, 'getAttributes')) {
+            $data = $row->getAttributes();
+            if (method_exists($row, 'getRelations')) {
+                foreach ($row->getRelations() as $relationName => $relation) {
+                    if (is_iterable($relation)) {
+                        foreach ($relation as $relationItem) {
+                            $data[$relationName][] = self::convertToArray($relationItem, ['ignore_getters' => true]);
+                        }
+                    } else {
+                        $data[$relationName] = self::convertToArray($relation, ['ignore_getters' => true]);
+                    }
+                }
+            }
+
+            return $data;
+        }
+
         $row = is_object($row) && method_exists($row, 'makeHidden') ? $row->makeHidden(Arr::get($filters, 'hidden',
             [])) : $row;
         $row = is_object($row) && method_exists($row, 'makeVisible') ? $row->makeVisible(Arr::get($filters, 'visible',
             [])) : $row;
-        $data = $row instanceof Arrayable ? $row->toArray() : (array) $row;
 
+        $data = $row instanceof Arrayable ? $row->toArray() : (array) $row;
         foreach ($data as &$value) {
             if (is_object($value) || is_array($value)) {
                 $value = self::convertToArray($value);
@@ -358,6 +411,10 @@ class Helper
 
         /** @var array $callbacks */
         $callbacks = config('datatables.callback', ['$', '$.', 'function']);
+
+        if (Str::startsWith($key, 'language.')) {
+            return false;
+        }
 
         return Str::startsWith(trim($value), $callbacks) || Str::contains($key, ['editor', 'minDate', 'maxDate']);
     }

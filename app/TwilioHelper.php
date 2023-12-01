@@ -21,12 +21,16 @@ class TwilioHelper
 
     public function sendSMS($to, $body)
     {
-        return $this->client->messages->create(
-            $to,
-            [
-                'from' => config('services.twilio.phone_number'),
-                'body' => $body,
-            ]
-        );
+        try {
+            return $this->client->messages->create(
+              $to,
+              [
+                  'from' => config('services.twilio.phone_number'),
+                  'body' => $body,
+              ]
+          );
+        } catch (\Exception $e) {
+          return $e->getMessage();
+        }
     }
 }

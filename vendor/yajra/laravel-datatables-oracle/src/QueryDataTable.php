@@ -5,9 +5,11 @@ namespace Yajra\DataTables;
 use Illuminate\Contracts\Database\Eloquent\Builder as EloquentBuilder;
 use Illuminate\Contracts\Database\Query\Builder as QueryBuilder;
 use Illuminate\Database\Connection;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Query\Expression;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Yajra\DataTables\Utilities\Helper;
 
@@ -47,6 +49,63 @@ class QueryDataTable extends DataTableAbstract
      * @var bool
      */
     protected bool $keepSelectBindings = false;
+
+    /**
+     * Flag to ignore the selects in count query.
+     *
+     * @var bool
+     */
+    protected bool $ignoreSelectInCountQuery = false;
+
+    /**
+     * Enable scout search and use this model for searching.
+     *
+     * @var Model|null
+     */
+    protected ?Model $scoutModel = null;
+
+    /**
+     * Maximum number of hits to return from scout.
+     *
+     * @var int
+     */
+    protected int $scoutMaxHits = 1000;
+
+    /**
+     * Add dynamic filters to scout search.
+     *
+     * @var callable|null
+     */
+    protected $scoutFilterCallback = null;
+
+    /**
+     * Flag if scout search was performed.
+     *
+     * @var bool
+     */
+    protected bool $scoutSearched = false;
+
+    /**
+     * Scout index name.
+     *
+     * @var string
+     */
+    protected string $scoutIndex;
+
+    /**
+     * Scout key name.
+     *
+     * @var string
+     */
+    protected string $scoutKey;
+
+    /**
+     * Flag to disable user ordering if a fixed ordering was performed (e.g. scout search).
+     * Only works with corresponding javascript listener.
+     *
+     * @var bool
+     */
+    protected $disableUserOrdering = false;
 
     /**
      * @param  QueryBuilder  $builder
@@ -107,11 +166,21 @@ class QueryDataTable extends DataTableAbstract
     }
 
     /**
+     * Get paginated results.
+     *
+     * @return \Illuminate\Support\Collection<int, array>
+     */
+    public function results(): Collection
+    {
+        return $this->query->get();
+    }
+
+    /**
      * Prepare query by executing count, filter, order and paginate.
      *
      * @return $this
      */
-    protected function prepareQuery(): static
+    public function prepareQuery(): static
     {
         if (! $this->prepared) {
             $this->totalRecords = $this->totalCount();
@@ -123,7 +192,7 @@ class QueryDataTable extends DataTableAbstract
 
         $this->prepared = true;
 
-        return  $this;
+        return $this;
     }
 
     /**
@@ -146,9 +215,20 @@ class QueryDataTable extends DataTableAbstract
         $builder = clone $this->query;
 
         if ($this->isComplexQuery($builder)) {
-            $table = $this->getConnection()->raw('('.$builder->toSql().') count_row_table');
+            $builder->select(DB::raw('1 as dt_row_count'));
+            if ($this->ignoreSelectInCountQuery || ! $this->isComplexQuery($builder)) {
+                return $this->getConnection()
+                    ->query()
+                    ->fromRaw('('.$builder->toSql().') count_row_table')
+                    ->setBindings($builder->getBindings());
+            }
 
-            return $this->getConnection()->table($table)->setBindings($builder->getBindings());
+            $builder = clone $this->query;
+
+            return $this->getConnection()
+                ->query()
+                ->fromRaw('('.$builder->toSql().') count_row_table')
+                ->setBindings($builder->getBindings());
         }
 
         $row_count = $this->wrap('row_count');
@@ -183,16 +263,6 @@ class QueryDataTable extends DataTableAbstract
     }
 
     /**
-     * Get paginated results.
-     *
-     * @return \Illuminate\Support\Collection<int, array>
-     */
-    public function results(): Collection
-    {
-        return $this->query->get();
-    }
-
-    /**
      * Keep the select bindings.
      *
      * @return $this
@@ -202,6 +272,35 @@ class QueryDataTable extends DataTableAbstract
         $this->keepSelectBindings = true;
 
         return $this;
+    }
+
+    /**
+     * Perform column search.
+     *
+     * @return void
+     */
+    protected function filterRecords(): void
+    {
+        $initialQuery = clone $this->query;
+
+        if ($this->autoFilter && $this->request->isSearchable()) {
+            $this->filtering();
+        }
+
+        if (is_callable($this->filterCallback)) {
+            call_user_func_array($this->filterCallback, $this->resolveCallbackParameter());
+        }
+
+        $this->columnSearch();
+        $this->searchPanesSearch();
+
+        // If no modification between the original query and the filtered one has been made
+        // the filteredRecords equals the totalRecords
+        if ($this->query == $initialQuery) {
+            $this->filteredRecords ??= $this->totalRecords;
+        } else {
+            $this->filteredCount();
+        }
     }
 
     /**
@@ -263,6 +362,19 @@ class QueryDataTable extends DataTableAbstract
         return $this->setupKeyword($keyword);
     }
 
+    protected function getColumnNameByIndex(int $index): string
+    {
+        $name = (isset($this->columns[$index]) && $this->columns[$index] != '*')
+            ? $this->columns[$index]
+            : $this->getPrimaryKeyName();
+
+        if ($name instanceof Expression) {
+            $name = $name->getValue($this->query->getGrammar());
+        }
+
+        return in_array($name, $this->extraColumns, true) ? $this->getPrimaryKeyName() : $name;
+    }
+
     /**
      * Apply filterColumn api search.
      *
@@ -307,6 +419,16 @@ class QueryDataTable extends DataTableAbstract
         }
 
         return $instance;
+    }
+
+    /**
+     * Get query builder instance.
+     *
+     * @return QueryBuilder
+     */
+    public function getQuery(): QueryBuilder
+    {
+        return $this->query;
     }
 
     /**
@@ -525,20 +647,6 @@ class QueryDataTable extends DataTableAbstract
     }
 
     /**
-     * Paginate dataTable using limit without offset
-     * with additional where clause via callback.
-     *
-     * @param  callable  $callback
-     * @return $this
-     */
-    public function limit(callable $callback): static
-    {
-        $this->limitCallback = $callback;
-
-        return $this;
-    }
-
-    /**
      * Perform pagination.
      *
      * @return void
@@ -556,6 +664,20 @@ class QueryDataTable extends DataTableAbstract
         } else {
             $this->query->skip($start)->take($limit);
         }
+    }
+
+    /**
+     * Paginate dataTable using limit without offset
+     * with additional where clause via callback.
+     *
+     * @param  callable  $callback
+     * @return $this
+     */
+    public function limit(callable $callback): static
+    {
+        $this->limitCallback = $callback;
+
+        return $this;
     }
 
     /**
@@ -602,11 +724,11 @@ class QueryDataTable extends DataTableAbstract
     /**
      * Resolve callback parameter instance.
      *
-     * @return QueryBuilder
+     * @return array<int|string, mixed>
      */
-    protected function resolveCallbackParameter()
+    protected function resolveCallbackParameter(): array
     {
-        return $this->query;
+        return [$this->query, $this->scoutSearched];
     }
 
     /**
@@ -707,6 +829,11 @@ class QueryDataTable extends DataTableAbstract
      */
     protected function globalSearch(string $keyword): void
     {
+        // Try scout search first & fall back to default search if disabled/failed
+        if ($this->applyScoutSearch($keyword)) {
+            return;
+        }
+
         $this->query->where(function ($query) use ($keyword) {
             collect($this->request->searchableColumnIndex())
                 ->map(function ($index) {
@@ -736,7 +863,7 @@ class QueryDataTable extends DataTableAbstract
     {
         $query_log = $this->getConnection()->getQueryLog();
         array_walk_recursive($query_log, function (&$item) {
-            if (is_string($item)) {
+            if (is_string($item) && extension_loaded('iconv')) {
                 $item = iconv('iso-8859-1', 'utf-8', $item);
             }
         });
@@ -764,6 +891,9 @@ class QueryDataTable extends DataTableAbstract
             }
         }
 
+        // Set flag to disable ordering
+        $appends['disableOrdering'] = $this->disableUserOrdering;
+
         return array_merge($data, $appends);
     }
 
@@ -780,12 +910,226 @@ class QueryDataTable extends DataTableAbstract
     }
 
     /**
-     * Get query builder instance.
+     * Ignore the selects in count query.
      *
-     * @return QueryBuilder
+     * @return $this
      */
-    public function getQuery(): QueryBuilder
+    public function ignoreSelectsInCountQuery(): static
     {
-        return $this->query;
+        $this->ignoreSelectInCountQuery = true;
+
+        return $this;
+    }
+
+    /**
+     * Perform sorting of columns.
+     *
+     * @return void
+     */
+    public function ordering(): void
+    {
+        // Skip if user ordering is disabled (e.g. scout search)
+        if ($this->disableUserOrdering) {
+            return;
+        }
+
+        parent::ordering();
+    }
+
+    /**
+     * Enable scout search and use provided model for searching.
+     * $max_hits is the maximum number of hits to return from scout.
+     *
+     * @param  string  $model
+     * @param  int  $max_hits
+     * @return $this
+     *
+     * @throws \Exception
+     */
+    public function enableScoutSearch(string $model, int $max_hits = 1000): static
+    {
+        $scout_model = new $model;
+        if (! class_exists($model) || ! ($scout_model instanceof Model)) {
+            throw new \Exception("$model must be an Eloquent Model.");
+        }
+        if (! method_exists($scout_model, 'searchableAs') || ! method_exists($scout_model, 'getScoutKeyName')) {
+            throw new \Exception("$model must use the Searchable trait.");
+        }
+
+        $this->scoutModel = $scout_model;
+        $this->scoutMaxHits = $max_hits;
+        $this->scoutIndex = $this->scoutModel->searchableAs();
+        $this->scoutKey = $this->scoutModel->getScoutKeyName();
+
+        return $this;
+    }
+
+    /**
+     * Add dynamic filters to scout search.
+     *
+     * @param  callable  $callback
+     * @return $this
+     */
+    public function scoutFilter(callable $callback): static
+    {
+        $this->scoutFilterCallback = $callback;
+
+        return $this;
+    }
+
+    /**
+     * Apply scout search to query if enabled.
+     *
+     * @param  string  $search_keyword
+     * @return bool
+     */
+    protected function applyScoutSearch(string $search_keyword): bool
+    {
+        if ($this->scoutModel == null) {
+            return false;
+        }
+
+        try {
+            // Perform scout search
+            $search_filters = '';
+            if (is_callable($this->scoutFilterCallback)) {
+                $search_filters = ($this->scoutFilterCallback)($search_keyword);
+            }
+
+            $search_results = $this->performScoutSearch($search_keyword, $search_filters);
+
+            // Apply scout search results to query
+            $this->query->where(function ($query) use ($search_results) {
+                $this->query->whereIn($this->scoutKey, $search_results);
+            });
+
+            // Order by scout search results & disable user ordering (if db driver is supported)
+            if (count($search_results) > 0 && $this->applyFixedOrderingToQuery($this->scoutKey, $search_results)) {
+                // Disable user ordering because we already ordered by search relevancy
+                $this->disableUserOrdering = true;
+            }
+
+            $this->scoutSearched = true;
+
+            return true;
+        } catch (\Exception) {
+            // Scout search failed, fallback to default search
+            return false;
+        }
+    }
+
+    /**
+     * Apply fixed ordering to query by a fixed set of values depending on database driver (used for scout search).
+     *
+     * Currently supported drivers: MySQL
+     *
+     * @param  string  $keyName
+     * @param  array  $orderedKeys
+     * @return bool
+     */
+    protected function applyFixedOrderingToQuery(string $keyName, array $orderedKeys)
+    {
+        $connection = $this->getConnection();
+        $driverName = $connection->getDriverName();
+
+        // Escape keyName and orderedKeys
+        $keyName = $connection->getQueryGrammar()->wrap($keyName);
+        $orderedKeys = collect($orderedKeys)
+            ->map(function ($value) use ($connection) {
+                return $connection->escape($value);
+            });
+
+        switch ($driverName) {
+            case 'mysql':
+                $this->query->orderByRaw("FIELD($keyName, ".$orderedKeys->implode(',').')');
+
+                return true;
+
+            case 'pgsql':
+            case 'oracle':
+                $this->query->orderByRaw(
+                    'CASE '
+                    .
+                    $orderedKeys
+                        ->map(fn ($value, $index) => "WHEN $keyName=$value THEN $index")
+                        ->implode(' ')
+                    .
+                    ' END'
+                );
+
+                return true;
+
+            case 'sqlite':
+            case 'sqlsrv':
+                $this->query->orderByRaw(
+                    "CASE $keyName "
+                    .
+                    $orderedKeys
+                        ->map(fn ($value, $index) => "WHEN $value THEN $index")
+                        ->implode(' ')
+                    .
+                    ' END'
+                );
+
+                return true;
+
+            default:
+                return false;
+        }
+    }
+
+    /**
+     * Perform a scout search with the configured engine and given parameters. Return matching model IDs.
+     *
+     * @param  string  $searchKeyword
+     * @param  mixed  $searchFilters
+     * @return array
+     *
+     * @throws \Exception
+     */
+    protected function performScoutSearch(string $searchKeyword, mixed $searchFilters = []): array
+    {
+        if (! class_exists('\Laravel\Scout\EngineManager')) {
+            throw new \Exception('Laravel Scout is not installed.');
+        }
+        $engine = app(\Laravel\Scout\EngineManager::class)->engine();
+
+        if ($engine instanceof \Laravel\Scout\Engines\MeilisearchEngine) {
+            /** @var \Meilisearch\Client $engine */
+            $search_results = $engine
+                ->index($this->scoutIndex)
+                ->rawSearch($searchKeyword, [
+                    'limit' => $this->scoutMaxHits,
+                    'attributesToRetrieve' => [$this->scoutKey],
+                    'filter' => $searchFilters,
+                ]);
+
+            /** @var array<int, array<string, mixed>> $hits */
+            $hits = $search_results['hits'] ?? [];
+
+            return collect($hits)
+                ->pluck($this->scoutKey)
+                ->all();
+        } elseif ($engine instanceof \Laravel\Scout\Engines\AlgoliaEngine) {
+            /** @var \Algolia\AlgoliaSearch\SearchClient $engine */
+            $algolia = $engine->initIndex($this->scoutIndex);
+
+            $search_results = $algolia->search($searchKeyword, [
+                'offset' => 0,
+                'length' => $this->scoutMaxHits,
+                'attributesToRetrieve' => [$this->scoutKey],
+                'attributesToHighlight' => [],
+                'filters' => $searchFilters,
+            ]);
+
+            /** @var array<int, array<string, mixed>> $hits */
+            $hits = $search_results['hits'] ?? [];
+
+            return collect($hits)
+                ->pluck($this->scoutKey)
+                ->all();
+        } else {
+            throw new \Exception('Unsupported Scout Engine. Currently supported: Meilisearch, Algolia');
+        }
     }
 }

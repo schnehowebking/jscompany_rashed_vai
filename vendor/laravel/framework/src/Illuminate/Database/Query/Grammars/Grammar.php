@@ -36,6 +36,7 @@ class Grammar extends BaseGrammar
         'aggregate',
         'columns',
         'from',
+        'indexHint',
         'joins',
         'wheres',
         'groups',
@@ -619,7 +620,7 @@ class Grammar extends BaseGrammar
      */
     public function prepareBindingForJsonContains($binding)
     {
-        return json_encode($binding);
+        return json_encode($binding, JSON_UNESCAPED_UNICODE);
     }
 
     /**

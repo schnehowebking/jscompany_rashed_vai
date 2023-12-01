@@ -30,6 +30,7 @@
         <div class="col-12">
             <form action="{{ route('rd2brower.update', [$brower->id])}}" method="POST">
               @csrf
+              <input type="hidden" name="prospect_id" value="" />
                 <!-- Account Details -->
                 <div id="account-details" class="content">
                     <div class="content-header mb-3">
