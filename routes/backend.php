@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
   Route::resource('rd2interviews', Rd2InterviewController::class);
   Route::get('rd2interviews', [Rd2InterviewController::class, 'index'])->name('rd2interviews.index');
   Route::get('rd2interviews/create/{id}', [Rd2InterviewController::class, 'create'])->name('rd2interviews.create');
+  Route::get('rd2interviews/store', [Rd2InterviewController::class, 'store'])->name('rd2interviews.store');
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');

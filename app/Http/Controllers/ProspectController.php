@@ -34,10 +34,10 @@ class ProspectController extends Controller
               ->addColumn('interviewed', function ($prospect) {
                 $interviewButton = '';
                 if (!$prospect->interviewed) {
-                    $interviewButton = '<a href="'.route('rd2interviews.create', $prospect->id).'" class="me-1"><i class="bx bx-group"></i></a>';
+                    $interviewButton = '<a href="'.route('rd2interviews.create', $prospect->id).'" class="me-1 badge bg-info">Take Interview</a>';
                 }
                   $badgeClass = $prospect->interviewed ? 'bg-success' : 'bg-danger';
-                  return "<span class='badge {$badgeClass}'>" . ($prospect->interviewed ? 'Interviewed' : 'Pending') . "</span>".$interviewButton;
+                  return "<span class='badge {$badgeClass}'> " . ($prospect->interviewed ? 'Interviewed' : 'Pending') . "  </span>".$interviewButton;
               })
               ->rawColumns(['action', 'interviewed'])
               ->make(true);
