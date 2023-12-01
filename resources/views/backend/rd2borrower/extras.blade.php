@@ -284,7 +284,7 @@
 
 
 <div class="col-md-3">
-  <label class="form-label" for="eligible_debt_before_credit">Eligible Debt Before Credit</label>
+  <label class="form-label" for="eligible_debt_before_credit">Eligible Debit Before Credit</label>
   <input type="text" class="form-control" name="eligible_debt_before_credit">
 </div>
 
