@@ -356,7 +356,9 @@
                 </div>
                 <hr />
 
-                <div class="content mt-2">
+                <div class="row mt-2">
+
+                <div class="content mt-2 col-md-6">
                     <div class="content-header mb-3">
                         <h4 class="mb-0">STEP-2: LAND CHARGE INFORMATION</h4>
                         <small>Enter LAND CHARGE INFORMATION Details.</small>
@@ -435,8 +437,7 @@
 
                     </div>
                 </div>
-                <hr />
-                <div class="content mt-2">
+                <div class="content mt-2 col-md-6">
                     <div class="content-header mb-3">
                         <h4 class="mb-0">STEP-3: HOUSEHOLD RESOURCE CAPACITY</h4>
                         <small>Enter HOUSEHOLD RESOURCE CAPACITY (excluding intake).</small>
@@ -472,8 +473,10 @@
                         </div>
                     </div>
                 </div>
+                </div>
                 <hr />
-                <div class="content mt-2">
+                <div class="row mt-2">
+                <div class="content mt-2 col-md-6">
                     <div class="content-header mb-3">
                         <h4 class="mb-0">STEP-4: HOUSEHOLD DUCTMENT</h4>
                         <small>Enter HOUSEHOLD DUCTMENT</small>
@@ -507,8 +510,7 @@
 
                     </div>
                 </div>
-                <hr />
-                <div class="content mt-2">
+                <div class="content mt-2 col-md-6">
                     <div class="content-header mb-3">
                         <h4 class="mb-0">STEP-5: FINANCING CONDITION</h4>
                         <small>Enter FINANCING CONDITION</small>
@@ -547,6 +549,7 @@
                         </div>
 
                     </div>
+                </div>
                 </div>
                 <hr />
                 <div class="content mt-2">

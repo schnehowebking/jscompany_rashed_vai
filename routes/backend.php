@@ -21,6 +21,7 @@ Route::middleware(['auth'])->group(function () {
 
   // Route::resource('rd2brower', Rd2BrowerController::class);
   Route::resource('rd2interviews', Rd2InterviewController::class);
+  Route::get('rd2interviews', [ProspectController::class, 'index'])->name('rd2interviews.index');
 
   Route::resource('customers', CustomerController::class)->except('update');
   Route::post('customers/update', [CustomerController::class, 'update'])->name('customers.update');
