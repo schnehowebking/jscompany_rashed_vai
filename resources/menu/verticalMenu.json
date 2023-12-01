@@ -16,7 +16,7 @@
       "name": "RD2 Interviews",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "rd2interviews",
-      "url": "rd2interviews/create"
+      "url": "rd2interviews"
     },
     {
       "name": "Administrative",

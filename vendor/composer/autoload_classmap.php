@@ -68,6 +68,7 @@ return array(
     'App\\Providers\\JetstreamServiceProvider' => $baseDir . '/app/Providers/JetstreamServiceProvider.php',
     'App\\Providers\\MenuServiceProvider' => $baseDir . '/app/Providers/MenuServiceProvider.php',
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
+    'App\\TwilioHelper' => $baseDir . '/app/TwilioHelper.php',
     'Asm89\\Stack\\Cors' => $vendorDir . '/asm89/stack-cors/src/Cors.php',
     'Asm89\\Stack\\CorsService' => $vendorDir . '/asm89/stack-cors/src/CorsService.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

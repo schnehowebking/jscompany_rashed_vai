@@ -8,10 +8,7 @@ use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AdminRequest;
-use App\Models\Application;
-use App\Models\Brand;
-use App\Models\Customer;
-use App\Models\SolarProgam;
+
 use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
