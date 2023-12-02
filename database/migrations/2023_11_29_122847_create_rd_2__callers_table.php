@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->string('profession')->nullable();
             $table->string('type_of_contract')->nullable();
-            $table->integer('professional_maturity_months')->nullable();
+            $table->string('professional_maturity_months')->nullable();
             $table->string('bank_name')->nullable();
             $table->string('savings_info')->nullable();
             $table->decimal('annual_tax_income')->nullable();
@@ -37,8 +37,8 @@ return new class extends Migration
             $table->decimal('rental_charge')->nullable();
             $table->decimal('rental_income')->nullable();
             $table->decimal('rental_income_70_percent')->nullable();
-            $table->integer('bank_seniority_months')->nullable();
-            $table->integer('seniority_pel_months')->nullable();
+            $table->string('bank_seniority_months')->nullable();
+            $table->string('seniority_pel_months')->nullable();
             $table->decimal('credit_remaining_to_settle')->nullable();
             $table->decimal('credit_a_in_progress_per_month')->nullable();
             $table->integer('remaining_month_credit_a_in_progress')->nullable();

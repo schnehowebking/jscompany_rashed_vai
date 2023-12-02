@@ -42,7 +42,7 @@
                 <div class="row ">
                     <div id="" class="content mt-2 col-md-6">
                         <div class="content-header mb-3">
-                            <h6 class="mb-0">1(a). Caller's information</h6>
+                            <h6 class="mb-0">1(a)Caller's information</h6>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-3">
@@ -138,18 +138,18 @@
                                     Months</label>
                                 <select class="form-control" name="caller_info_professional_maturity_months">
                                     <option value="">Select One</option>
-                                    <option value=". +1">. +1</option>
-                                    <option value="+2">. +2</option>
-                                    <option value="+3">. +3</option>
-                                    <option value="+4">. +4</option>
-                                    <option value="+5">. +5</option>
-                                    <option value="+6">. +6</option>
-                                    <option value="+7">. +7</option>
-                                    <option value="+8">. +8</option>
-                                    <option value="+9">. +9</option>
-                                    <option value="+10">. +10</option>
-                                    <option value="+11">. +11</option>
-                                    <option value="+12">. +12</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                    <option value="+6">+6</option>
+                                    <option value="+7">+7</option>
+                                    <option value="+8">+8</option>
+                                    <option value="+9">+9</option>
+                                    <option value="+10">+10</option>
+                                    <option value="+11">+11</option>
+                                    <option value="+12">+12</option>
 
                                 </select>
                             </div>
@@ -208,18 +208,18 @@
                                     Months</label>
                                 <select class="form-control" name="caller_info_bank_seniority_months">
                                     <option value="">Select One</option>
-                                    <option value=". +1">. +1</option>
-                                    <option value="+2">. +2</option>
-                                    <option value="+3">. +3</option>
-                                    <option value="+4">. +4</option>
-                                    <option value="+5">. +5</option>
-                                    <option value="+6">. +6</option>
-                                    <option value="+7">. +7</option>
-                                    <option value="+8">. +8</option>
-                                    <option value="+9">. +9</option>
-                                    <option value="+10">. +10</option>
-                                    <option value="+11">. +11</option>
-                                    <option value="+12">. +12</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                    <option value="+6">+6</option>
+                                    <option value="+7">+7</option>
+                                    <option value="+8">+8</option>
+                                    <option value="+9">+9</option>
+                                    <option value="+10">+10</option>
+                                    <option value="+11">+11</option>
+                                    <option value="+12">+12</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -227,18 +227,18 @@
                                     Months</label>
                                 <select class="form-control" name="caller_info_seniority_pel_months">
                                     <option value="">Select One</option>
-                                    <option value=". +1">. +1</option>
-                                    <option value="+2">. +2</option>
-                                    <option value="+3">. +3</option>
-                                    <option value="+4">. +4</option>
-                                    <option value="+5">. +5</option>
-                                    <option value="+6">. +6</option>
-                                    <option value="+7">. +7</option>
-                                    <option value="+8">. +8</option>
-                                    <option value="+9">. +9</option>
-                                    <option value="+10">. +10</option>
-                                    <option value="+11">. +11</option>
-                                    <option value="+12">. +12</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                    <option value="+6">+6</option>
+                                    <option value="+7">+7</option>
+                                    <option value="+8">+8</option>
+                                    <option value="+9">+9</option>
+                                    <option value="+10">+10</option>
+                                    <option value="+11">+11</option>
+                                    <option value="+12">+12</option>
                                 </select>
                             </div>
                             <div class="col-md-3">
@@ -283,7 +283,7 @@
                     </div>
                     <div class="content mt-2 col-md-6">
                         <div class="content-header mb-3">
-                            <h6 class="mb-0">1(b). Co-borrower's information</h6>
+                            <h6 class="mb-0">1(b)Co-borrower's information</h6>
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-3">
@@ -412,18 +412,18 @@
                                     Months</label>
                                 <select class="form-control" name="co_borrower_info_professional_maturity_months">
                                     <option value="">Select One</option>
-                                    <option value=". +1">. +1</option>
-                                    <option value="+2">. +2</option>
-                                    <option value="+3">. +3</option>
-                                    <option value="+4">. +4</option>
-                                    <option value="+5">. +5</option>
-                                    <option value="+6">. +6</option>
-                                    <option value="+7">. +7</option>
-                                    <option value="+8">. +8</option>
-                                    <option value="+9">. +9</option>
-                                    <option value="+10">. +10</option>
-                                    <option value="+11">. +11</option>
-                                    <option value="+12">. +12</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                    <option value="+6">+6</option>
+                                    <option value="+7">+7</option>
+                                    <option value="+8">+8</option>
+                                    <option value="+9">+9</option>
+                                    <option value="+10">+10</option>
+                                    <option value="+11">+11</option>
+                                    <option value="+12">+12</option>
                                 </select>
                             </div>
 
@@ -501,18 +501,18 @@
                                     Months</label>
                                 <select class="form-control" name="co_borrower_info_bank_seniority_months">
                                     <option value="">Select One</option>
-                                    <option value=". +1">. +1</option>
-                                    <option value="+2">. +2</option>
-                                    <option value="+3">. +3</option>
-                                    <option value="+4">. +4</option>
-                                    <option value="+5">. +5</option>
-                                    <option value="+6">. +6</option>
-                                    <option value="+7">. +7</option>
-                                    <option value="+8">. +8</option>
-                                    <option value="+9">. +9</option>
-                                    <option value="+10">. +10</option>
-                                    <option value="+11">. +11</option>
-                                    <option value="+12">. +12</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                    <option value="+6">+6</option>
+                                    <option value="+7">+7</option>
+                                    <option value="+8">+8</option>
+                                    <option value="+9">+9</option>
+                                    <option value="+10">+10</option>
+                                    <option value="+11">+11</option>
+                                    <option value="+12">+12</option>
                                 </select>
                             </div>
 
@@ -522,18 +522,18 @@
                                     Months</label>
                                 <select class="form-control" name="co_borrower_info_seniority_pel_months">
                                     <option value="">Select One</option>
-                                    <option value=". +1">. +1</option>
-                                    <option value="+2">. +2</option>
-                                    <option value="+3">. +3</option>
-                                    <option value="+4">. +4</option>
-                                    <option value="+5">. +5</option>
-                                    <option value="+6">. +6</option>
-                                    <option value="+7">. +7</option>
-                                    <option value="+8">. +8</option>
-                                    <option value="+9">. +9</option>
-                                    <option value="+10">. +10</option>
-                                    <option value="+11">. +11</option>
-                                    <option value="+12">. +12</option>
+                                    <option value="+1">+1</option>
+                                    <option value="+2">+2</option>
+                                    <option value="+3">+3</option>
+                                    <option value="+4">+4</option>
+                                    <option value="+5">+5</option>
+                                    <option value="+6">+6</option>
+                                    <option value="+7">+7</option>
+                                    <option value="+8">+8</option>
+                                    <option value="+9">+9</option>
+                                    <option value="+10">+10</option>
+                                    <option value="+11">+11</option>
+                                    <option value="+12">+12</option>
                                 </select>
                             </div>
 
@@ -680,7 +680,7 @@
 
                                     <option value="V.E.FA">V.E.FA</option>
                                     <option value="M.I NEUVE">M.I NEUVE</option>
-                                    <option value="RENO. REHA. AMEN.">RENO. REHA. AMEN.</option>
+                                    <option value="RENOREHAAMEN.">RENOREHAAMEN.</option>
                                     <option value="Building">Building</option>
                                     <option value="PROF.">PROF.</option>
                                     <option value="Whats app">Whats app</option>
