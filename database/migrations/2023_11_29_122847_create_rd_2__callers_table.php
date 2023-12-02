@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rd_2__callers', function (Blueprint $table) {
+        Schema::create('rd_2_callers', function (Blueprint $table) {
           $table->id();
             $table->foreignId('prospect_id')->constrained('prospects');
             $table->string('name_or_ste')->nullable();

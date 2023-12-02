@@ -26,18 +26,15 @@ class ProspectController extends Controller
             ->addIndexColumn()
             ->addColumn('action', function ($prospect) {
                 $editButton = '<a href="'.route('prospect.edit', $prospect->id).'" class="me-1"><i class="bx bx-edit"></i></a>';
-
-
-
                 return $editButton;
             })
             ->addColumn('interviewed', function ($prospect) {
               $interviewButton = '';
               if (!$prospect->interviewed) {
-                  $interviewButton = '<a href="'.route('rd2interviews.create', $prospect->id).'" class="me-1 badge bg-info">Take Interview</a>';
+                  $interviewButton = '<a href="'.route('rd2interviews.create', $prospect->id).'" class="me-1 badge bg-info">Take Interview</a> ';
               }
                 $badgeClass = $prospect->interviewed ? 'bg-success' : 'bg-danger';
-                return "<span class='badge {$badgeClass}'>" . ($prospect->interviewed ? 'Interviewed' : 'Pending') . "</span>".$interviewButton;
+                return " <span class='m-2 badge {$badgeClass}'>" . ($prospect->interviewed ? 'Interviewed' : 'Pending') . "</span>".$interviewButton;
             })
             ->rawColumns(['action', 'interviewed'])
             ->make(true);

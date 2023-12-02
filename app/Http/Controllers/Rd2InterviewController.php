@@ -28,7 +28,10 @@ class Rd2InterviewController extends Controller
     //
     if ($request->ajax()) {
       $prospects = DB::table('prospects')->where('interviewed', 1)->get();
-      return DataTables::of($prospects)->addIndexColumn()->make(true);
+      return DataTables::of($prospects)->addIndexColumn()->addColumn('action', function ($prospect) {
+        $editButton = '<a href="'.route('rd2interviews.edit', $prospect->id).'" class="me-1"><i class="bx bx-edit"></i></a>';
+        return $editButton;
+    })->rawColumns(['action'])->make(true);
     }
 
     return view('backend.rd2interviews.index');
@@ -99,7 +102,7 @@ class Rd2InterviewController extends Controller
     // rd2 brower
     $rd2brower = new Rd_2_brower();
 
-    $rd2brower->caller_id = $rd2caller->id;
+    $rd2brower->rd_2_caller_id = $rd2caller->id;
     $rd2brower->name_or_ste = $request->input('co_borrower_info_name_or_ste');
     $rd2brower->first_name = $request->input('co_borrower_info_first_name');
     $rd2brower->current_address = $request->input('co_borrower_info_current_address');
@@ -209,6 +212,9 @@ class Rd2InterviewController extends Controller
 
     $prospect->interviewed = 1;
     $prospect->save();
+    return redirect()
+    ->route('rd2interviews.index')
+    ->withSuccess('Prospect Interview Done Successfully');
   }
 
   /**
@@ -269,7 +275,7 @@ class Rd2InterviewController extends Controller
       'projectFinancing'
     ])->find($id);
 
-    return $prospect;
+    // return $prospect;
     return view('backend.rd2interviews.edit', compact('prospect'));
   }
 
@@ -283,9 +289,19 @@ class Rd2InterviewController extends Controller
   public function update(Request $request, $id)
   {
     //
-    $prospect = Prospect::find($id);
+    $prospect = Prospect::with([
+      'rd2caller',
+      'rd2caller.rd2brower',
+      'landChargeInfo',
+      'householdResourceCapacity',
+      'householdDocument',
+      'financingCondition',
+      'projectFinancing'
+    ])->find($id);
+
     // rd2 caller
     $rd2caller = $prospect->rd2Caller;
+    // dd($rd2caller);
 
 
     $rd2caller->prospect_id = $id;
@@ -316,10 +332,14 @@ class Rd2InterviewController extends Controller
     $rd2caller->family_situation = $request->input('caller_info_family_situation');
     $rd2caller->personal_contribution = $request->input('caller_info_personal_contribution');
 
+    $rd2caller->save();
+
+
     // rd2 brower
     $rd2brower = $rd2caller->rd2brower;
+    // dd($rd2brower);
 
-    $rd2brower->caller_id = $rd2brower->id;
+    $rd2brower->rd_2_caller_id = $rd2brower->id;
     $rd2brower->name_or_ste = $request->input('co_borrower_info_name_or_ste');
     $rd2brower->first_name = $request->input('co_borrower_info_first_name');
     $rd2brower->current_address = $request->input('co_borrower_info_current_address');
@@ -349,6 +369,8 @@ class Rd2InterviewController extends Controller
     $rd2brower->family_situation = $request->input('co_borrower_info_family_situation');
     $rd2brower->personal_contribution = $request->input('co_borrower_info_personal_contribution');
 
+
+    $rd2brower->save();
     // landChargeInfo
     $landChargeInfo = $prospect->landChargeInfo;
 
@@ -368,6 +390,7 @@ class Rd2InterviewController extends Controller
     $landChargeInfo->price_per_square_meter = $request->input('land_charge_info_price_per_square_meter');
     $landChargeInfo->venal_value_of_land = $request->input('land_charge_info_venal_value_of_land');
 
+    $landChargeInfo->save();
     // householdResourceCapacity
     $householdResourceCapacity = $prospect->householdResourceCapacity;
     $householdResourceCapacity->prospect_id = $id;
@@ -381,6 +404,8 @@ class Rd2InterviewController extends Controller
     $householdResourceCapacity->financial_capacity_of_household =
       $request->input('household_resource_financial_capacity_of_household');
 
+      $householdResourceCapacity->save();
+
     // householdDocument
     $householdDocument = $prospect->householdDocument;
 
@@ -391,6 +416,8 @@ class Rd2InterviewController extends Controller
     $householdDocument->debt_with_annual_credit = $request->input('household_document_debt_with_annual_credit');
     $householdDocument->capacity = $request->input('household_document_capacity');
 
+    $householdDocument->save();
+
     // financingCondition
     $financingCondition = $prospect->financingCondition;
     $financingCondition->prospect_id = $id;
@@ -400,6 +427,8 @@ class Rd2InterviewController extends Controller
     $financingCondition->duration_in_years = $request->input('financing_condition_duration_in_years');
     $financingCondition->duration_in_months = $request->input('financing_condition_duration_in_months');
     $financingCondition->current_credit = $request->input('financing_condition_current_credit');
+
+    $financingCondition->save();
 
     // projectFinancing
     $projectFinancing = $prospect->projectFinancing;
@@ -416,7 +445,12 @@ class Rd2InterviewController extends Controller
     $projectFinancing->debt_with_credit = $request->input('project_financing_debt_with_credit');
     $projectFinancing->total_financing_of_project = $request->input('project_financing_total_financing_of_project');
 
-    $prospect->save();
+    $projectFinancing->save();
+
+    // $prospect->save();
+    return redirect()
+    ->route('rd2interviews.index')
+    ->withSuccess('Interview Updated successfully');
   }
 
   /**

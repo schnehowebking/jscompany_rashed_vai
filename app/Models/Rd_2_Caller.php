@@ -10,7 +10,7 @@ class Rd_2_Caller extends Model
   use HasFactory;
 
   protected $guarded = [];
-  protected $table = "rd_2__callers";
+  protected $table = 'rd_2_callers';
 
   public function prospect()
   {

@@ -19,6 +19,7 @@
           <th>Name</th>
           <th>First name</th>
           <th>Telephone</th>
+          <th>Action</th>
 
         </tr>
       </thead>
@@ -54,8 +55,15 @@ $(function () {
           {data: 'name', name: 'name'},
           {data: 'first_name', name: 'first_name'},
           {data: 'telephone_prospect_1', name: 'telephone_prospect_1'},
+          {
+              data: 'action',
+              name: 'action',
+              orderable: false,
+              searchable: false
+          },
 
       ],
+
   });
 
 });
