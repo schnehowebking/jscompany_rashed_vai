@@ -62,6 +62,7 @@ class AdminController extends Controller
         'role' => $request->role,
         'created_at' => \now()
       ]);
+
       return \redirect()->route('administrative.index')->withSuccess('Admin added successfully');
     }
 
