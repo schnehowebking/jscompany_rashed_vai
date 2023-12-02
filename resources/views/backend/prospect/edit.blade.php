@@ -57,10 +57,9 @@
                       <div class="col-md-6">
                           <label class="form-label" for="genre">Genre</label>
                           <select class="form-control" name="genre" id="genre" required>
-                              <option value="{{ $prospect->genre }}">{{ $prospect->genre }}</option>
-                              <option value="MR.">MR.</option>
-                              <option value="Mrs.">Mrs.</option>
-                              <option value="Ste.">Ste.</option>
+                              <option {{ $prospect->genre == 'MR.' ? 'selected' : '' }} value="MR.">MR.</option>
+                              <option {{ $prospect->genre == 'Mrs.' ? 'selected' : '' }} value="Mrs.">Mrs.</option>
+                              <option {{ $prospect->genre == 'Ste.' ? 'selected' : '' }} value="Ste.">Ste.</option>
                           </select>
                       </div>
 
@@ -73,70 +72,66 @@
                             <label class="form-label" for="desired_work">Desired Work</label>
                             <select class="form-control" name="desired_work" id="desired_work" required>
                               <option value="{{ $prospect->desired_work }}">{{ $prospect->desired_work }}</option>
-                              <option value="V.E.FA">V.E.FA</option>
-                                <option value="M.I NEUVE">M.I NEUVE</option>
-                                <option value="RENO. REHA. AMEN.">RENO. REHA. AMEN.</option>
-                                <option value="Building">Building</option>
-                                <option value="PROF.">PROF.</option>
+                                <option {{ $prospect->desired_work == 'V.E.FA' ? 'selected' : '' }} value="V.E.FA">V.E.FA</option>
+                                <option {{ $prospect->desired_work == 'M.I NEUVE' ? 'selected' : '' }} value="M.I NEUVE">M.I NEUVE</option>
+                                <option {{ $prospect->desired_work == 'RENO. REHA. AMEN.' ? 'selected' : '' }} value="RENO. REHA. AMEN.">RENO. REHA. AMEN.</option>
+                                <option {{ $prospect->desired_work == 'Building' ? 'selected' : '' }} value="Building">Building</option>
+                                <option {{ $prospect->desired_work == 'PROF.' ? 'selected' : '' }} value="PROF.">PROF.</option>
 
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="desired_house_type">Desired House Type</label>
                             <select class="form-control" name="desired_house_type" id="desired_house_type">
-                                <option value="{{ $prospect->desired_house_type }}">{{ $prospect->desired_work }}</option>
-                                <option value="T1">T1</option>
-                                <option value="T2">T2</option>
-                                <option value="T3">T3</option>
-                                <option value="T4">T4</option>
-                                <option value="T5">T5</option>
-                                <option value="T6">T6</option>
-                                <option value="T7">T7</option>
-                                <option value="JUMELLÉE">JUMELLÉE</option>
+                                <option {{$prospect->desired_house_type == 'T1' ? 'selected' : ''}} value="T1">T1</option>
+                                <option {{$prospect->desired_house_type == 'T2' ? 'selected' : ''}} value="T2">T2</option>
+                                <option {{$prospect->desired_house_type == 'T3' ? 'selected' : ''}} value="T3">T3</option>
+                                <option {{$prospect->desired_house_type == 'T4' ? 'selected' : ''}} value="T4">T4</option>
+                                <option {{$prospect->desired_house_type == 'T5' ? 'selected' : ''}} value="T5">T5</option>
+                                <option {{$prospect->desired_house_type == 'T6' ? 'selected' : ''}} value="T6">T6</option>
+                                <option {{$prospect->desired_house_type == 'T7' ? 'selected' : ''}} value="T7">T7</option>
+                                <option {{$prospect->desired_house_type == 'JUMELLÉE' ? 'selected' : ''}} value="JUMELLÉE">JUMELLÉE</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="has_land">DO YOU HAVE A LAND?</label>
                             <select class="form-control" name="has_land" id="has_land">
-                              <option value="{{ $prospect->has_land }}">{{ $prospect->has_land }}</option>
-                              <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option {{$prospect->has_land == 1 ? 'selected' : ''}} value="1">Yes</option>
+                                <option {{$prospect->has_land == 0 ? 'selected' : ''}} value="0">No</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="land_municipality">Which municipality</label>
                             <select class="form-control" name="land_municipality" id="land_municipality">
-                              <option value="{{ $prospect->land_municipality }}">{{ $prospect->land_municipality }}</option>
 
-                              <option value="Awala-Yalimapo">Awala-Yalimapo</option>
-                                <option value="Camopi">Camopi</option>
-                                <option value="Grand-Santi">Grand-Santi</option>
-                                <option value="Iracoubo">Iracoubo</option>
-                                <option value="Kourou">Kourou</option>
-                                <option value="Macouria">Macouria</option>
-                                <option value="Mana">Mana</option>
-                                <option value="Maripasoula">Maripasoula</option>
-                                <option value="Matoury">Matoury</option>
-                                <option value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
-                                <option value="Ouanary">Ouanary</option>
-                                <option value="Papaichton">Papaichton</option>
-                                <option value="Reginat">Reginat</option>
-                                <option value="Remire-Montjoly">Remire-Montjoly</option>
-                                <option value="Roura">Roura</option>
-                                <option value="Saint-Élie">Saint-Élie</option>
-                                <option value="Saint-Georges">Saint-Georges</option>
-                                <option value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
-                                <option value="Saul">Saul</option>
-                                <option value="Sinnamary">Sinnamary</option>
+                                <option {{ $prospect->land_municipality == 'Awala-Yalimapo' ? 'selected' : '' }} value="Awala-Yalimapo">Awala-Yalimapo</option>
+                                <option {{ $prospect->land_municipality == 'Camopi' ? 'selected' : '' }} value="Camopi">Camopi</option>
+                                <option {{ $prospect->land_municipality == 'Grand-Santi' ? 'selected' : '' }} value="Grand-Santi">Grand-Santi</option>
+                                <option {{ $prospect->land_municipality == 'Iracoubo' ? 'selected' : '' }} value="Iracoubo">Iracoubo</option>
+                                <option {{ $prospect->land_municipality == 'Kourou' ? 'selected' : '' }} value="Kourou">Kourou</option>
+                                <option {{ $prospect->land_municipality == 'Macouria' ? 'selected' : '' }} value="Macouria">Macouria</option>
+                                <option {{ $prospect->land_municipality == 'Mana' ? 'selected' : '' }} value="Mana">Mana</option>
+                                <option {{ $prospect->land_municipality == 'Maripasoula' ? 'selected' : '' }} value="Maripasoula">Maripasoula</option>
+                                <option {{ $prospect->land_municipality == 'Matoury' ? 'selected' : '' }} value="Matoury">Matoury</option>
+                                <option {{ $prospect->land_municipality == 'Montsinéry-Tonnegrande' ? 'selected' : '' }} value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
+                                <option {{ $prospect->land_municipality == 'Ouanary' ? 'selected' : '' }} value="Ouanary">Ouanary</option>
+                                <option {{ $prospect->land_municipality == 'Papaichton' ? 'selected' : '' }} value="Papaichton">Papaichton</option>
+                                <option {{ $prospect->land_municipality == 'Reginat' ? 'selected' : '' }} value="Reginat">Reginat</option>
+                                <option {{ $prospect->land_municipality == 'Remire-Montjoly' ? 'selected' : '' }} value="Remire-Montjoly">Remire-Montjoly</option>
+                                <option {{ $prospect->land_municipality == 'Roura' ? 'selected' : '' }} value="Roura">Roura</option>
+                                <option {{ $prospect->land_municipality == 'Saint-Élie' ? 'selected' : '' }} value="Saint-Élie">Saint-Élie</option>
+                                <option {{ $prospect->land_municipality == 'Saint-Georges' ? 'selected' : '' }} value="Saint-Georges">Saint-Georges</option>
+                                <option {{ $prospect->land_municipality == 'Saint-Laurent-du-Maroni' ? 'selected' : '' }} value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
+                                <option {{ $prospect->land_municipality == 'Saul' ? 'selected' : '' }} value="Saul">Saul</option>
+                                <option {{ $prospect->land_municipality == 'Sinnamary' ? 'selected' : '' }} value="Sinnamary">Sinnamary</option>
                             </select>
                         </div>
                         <div class="col-md-6">
                             <label class="form-label" for="land_document_requested">Send the parcel plan or any
                                 type of doc.</label>
                             <select name="land_document_requested" class="form-control">
-                                <option value="{{ $prospect->land_document_requested }}">{{ $prospect->land_document_requested }}</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option {{ $prospect->land_document_requested == 1 ? 'selected' : '' }} value="1">Yes</option>
+                                <option {{ $prospect->land_document_requested == 0 ? 'selected' : '' }} value="0">No</option>
 
                             </select>
                         </div>
