@@ -2,3 +2,8 @@ vendor/
 node_modules/
 .env
 vendor/*
+
+# git rm -r --cached vendor
+
+# git add .
+# git commit -m ".gitignore"
