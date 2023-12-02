@@ -74,6 +74,35 @@
               </div>
             </div>
         </div>
+
+        <div class="col-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <form action="{{ route('store_settings') }}" method="POST" enctype="multipart/form-data">
+                    @csrf
+                    <div class="mb-3 col-12">
+                      <label class="form-label" for="appiontment_validation_sms">Appointment Validation SMS</label>
+                      <input type="hidden" name="type[]" value="appiontment_validation_sms">
+                      <textarea id="appiontment_validation_sms" name="appiontment_validation_sms" rows="6" class="form-control">{{app_setting('appiontment_validation_sms')}}</textarea>
+                    </div>
+
+                    <div class="mb-3 col-12">
+                      <label class="form-label" for="appiontment_reminder_sms">Reminder SMS(before 24 Hour)</label>
+                      <input type="hidden" name="type[]" value="appiontment_reminder_sms">
+                      <textarea id="appiontment_reminder_sms" name="appiontment_reminder_sms" rows="6" class="form-control">{{app_setting('appiontment_reminder_sms')}}</textarea>
+                    </div>
+
+                    <div class="mb-3 col-12">
+                      <label class="form-label" for="appiontment_salesperson_sms">SalesPerson SMS</label>
+                      <input type="hidden" name="type[]" value="appiontment_salesperson_sms">
+                      <textarea id="appiontment_salesperson_sms" name="appiontment_salesperson_sms" rows="6" class="form-control">{{app_setting('appiontment_salesperson_sms')}}</textarea>
+                    </div>
+
+                      <input type="submit" value="Update" class="btn btn-primary">
+                </form>
+              </div>
+            </div>
+        </div>
     </div>
 @endsection
 @section('page-script')
