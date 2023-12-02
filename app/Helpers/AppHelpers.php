@@ -29,13 +29,13 @@ function appiontment_validation_sms($prospect) {
     $sms = new \App\TwilioHelper();
     $sms->sendSMS($prospect->telephone_prospect_1, $message);
   } catch (\Exception $e) {
-    Log::error($e->getMessage());
+    Log::error("appiontment_validation_sms :" . $e->getMessage());
   }
 
   try {
     email_notification($prospect->email, $message);
   } catch (Exception $e) {
-    Log::error($e->getMessage());
+    Log::error("appiontment_validation_email :" .$e->getMessage());
   }
 }
 
@@ -49,13 +49,13 @@ function appiontment_salesperson_sms($prospect) {
     $sms = new \App\TwilioHelper();
     $sms->sendSMS($sales->phone, $message);
   } catch (\Exception $e) {
-    Log::error($e->getMessage());
+    Log::error("appiontment_salesperson_sms :" . $e->getMessage());
   }
 
   try {
     email_notification($sales->email, $message);
   } catch (Exception $e) {
-    Log::error($e->getMessage());
+    Log::error("appiontment_salesperson_mail :" . $e->getMessage());
   }
 }
 
@@ -68,13 +68,13 @@ function appiontment_reminder_sms($prospect) {
     $sms = new \App\TwilioHelper();
     $sms->sendSMS($prospect->telephone_prospect_1, $message);
   } catch (\Exception $e) {
-    Log::error($e->getMessage());
+    Log::error("appiontment_reminder_sms :" . $e->getMessage());
   }
 
   try {
     email_notification($prospect->email, $message);
   } catch (Exception $e) {
-    Log::error($e->getMessage());
+    Log::error("appiontment_reminder_mail :" . $e->getMessage());
   }
 }
 
