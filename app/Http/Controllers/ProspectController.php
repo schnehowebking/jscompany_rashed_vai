@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Log;
+use App\Models\User;
 use App\Models\Prospect;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
@@ -48,8 +49,8 @@ class ProspectController extends Controller
    */
   public function create()
   {
-    //
-    return view('backend.prospect.create');
+    $sales = User::where('role', 'sales')->get();
+    return view('backend.prospect.create', compact('sales'));
   }
 
   /**

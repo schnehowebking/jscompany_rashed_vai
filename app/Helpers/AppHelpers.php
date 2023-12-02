@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\User;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Log;
 use App\Notifications\EmailNotification;
@@ -34,12 +35,13 @@ function appiontment_validation_sms($prospect) {
 
 function appiontment_salesperson_sms($prospect) {
   try {
+    $sales = User::where('id', $prospect->interlocutor_appointment)->first();
     $sms = new \App\TwilioHelper();
     $message = app_setting('appiontment_salesperson_sms');
     $message = str_replace('{sales_person}', $prospect->interlocutor_appointment, $message);
     $message = str_replace('{customer_name}', $prospect->name, $message);
     $message = str_replace('{appointment_time}', $prospect->desired_rd1_time, $message);
-    $sms->sendSMS(app_setting('sales_person_phone'), $message);
+    $sms->sendSMS($sales->phone, $message);
   } catch (\Exception $e) {
     Log::error($e->getMessage());
   }

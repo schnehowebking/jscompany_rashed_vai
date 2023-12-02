@@ -29,7 +29,7 @@
                         <div class="mb-3 col-12">
                           <label class="form-label" for="appname">App Name</label>
                           <input type="hidden" name="type[]" value="appname">
-                          <input type="text" id="appname" name="appname" class="form-control" value="{{app_setting('appname')}}" placeholder="Solar Project">
+                          <input type="text" id="appname" name="appname" class="form-control" value="{{app_setting('appname')}}" placeholder="JSGroup Company">
                         </div>
                         <div class="d-flex align-items-start align-items-sm-center gap-4 mb-3">
                             <img src="{{ app_setting('logo') ? app_setting('logo') : asset('assets/img/avatars/1.png') }}" alt="user-avatar" class="d-block rounded"

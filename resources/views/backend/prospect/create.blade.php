@@ -238,25 +238,17 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label class="form-label" for="interlocutor_appointment">Appointment With</label>
-                            <select class="form-control " name="interlocutor_appointment">
+                            <select class="form-control " name="interlocutor_appointment" required>
                                 <option value="">Select One</option>
-                                <option value="secretariat">Secretariat</option>
-                                <option value="respVente">Resp.Vente</option>
-                                <option value="seller1">Seller 1</option>
-                                <option value="seller2">Seller 2</option>
-                                <option value="draftsman1">Draftsman 1</option>
-                                <option value="draftsman2">Draftsman 2</option>
-                                <option value="siteManager1">Site manager 1</option>
-                                <option value="siteManager2">Site manager 2</option>
-                                <option value="constructionManager1">Construction manager 1</option>
-                                <option value="constructionManager2">Construction manager 2</option>
-                                <option value="financialResp">Financial resp.</option>
-                                <option value="pdg">P.D.G</option>
+                                @foreach ($sales as $sale)
+                                  <option value="{{ $sale->id }}">{{ $sale->name }}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="col-md-4">
-                            <label class="form-label" for="exchange_validated_by">exchange_validated_by</label>
-                            <select class="form-control" name="exchange_validated_by">
+                            <label class="form-label" for="exchange_validated_by">Exchange Validated By</label>
+                            <input type="text" class="form-control" value="{{Auth::user()->name}}">
+                            {{-- <select class="form-control" name="exchange_validated_by">
                                 <option value="">Select One</option>
                                 <option value="secretariat">Secretariat</option>
                                 <option value="respVente">Resp.Vente</option>
@@ -270,7 +262,7 @@
                                 <option value="constructionManager2">Construction manager 2</option>
                                 <option value="financialResp">Financial resp.</option>
                                 <option value="pdg">P.D.G</option>
-                            </select>
+                            </select> --}}
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="assignment_prospect_rd1_validation">VALIDATE THE

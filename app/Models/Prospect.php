@@ -19,6 +19,10 @@ class Prospect extends Model
     return $this->hasOne(Rd_2_Caller::class, 'prospect_id');
   }
 
+  public function sales() {
+    return $this->belongsTo(User::class, 'interlocutor_appointment');
+  }
+
   public function landChargeInfo()
   {
     return $this->hasOne(LandChargeInfo::class);
