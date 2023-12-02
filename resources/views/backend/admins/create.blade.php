@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="row mb-3">
-        <label class="col-sm-2 col-form-label" for="phone">User name</label>
+        <label class="col-sm-2 col-form-label" for="phone">Phone</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" name="phone" id="phone" placeholder="mobile number here" />
         </div>

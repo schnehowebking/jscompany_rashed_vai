@@ -18,7 +18,7 @@ return new class extends Migration
           $table->string('name')->nullable();
           $table->string('first_name')->nullable();
           $table->string('genre')->nullable();
-          $table->integer('interview_done')->default(0);
+          $table->integer('email')->nullable();
           $table->string('telephone_prospect_1')->nullable();
           $table->string('desired_work')->nullable();
           $table->string('desired_house_type')->nullable();
