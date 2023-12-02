@@ -20,31 +20,37 @@
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_municipality">Municipality</label>
+
+          <?php
+              $all_browers = [
+                  '97319 Awala-Yalimapo',
+                  '97330 Camopi',
+                  '97340 Grand-Santi',
+                  '97350 Iracoubo',
+                  '97310 Kourou',
+                  '97355 Macouria',
+                  '97318 Mana',
+                  '97360',
+                  '97370 Maripasoula',
+                  '97351 Matoury',
+                  '97356 Montsinéry-Tonnegrande',
+                  '97380 Ouanary',
+                  '97316 Papaichton',
+                  '97353 Régina',
+                  '97390',
+                  '97354 Remire-Montjoly',
+                  '97311 Roura',
+                  '97352',
+                  '97312 Saint-Élie',
+                  '97313 Saint-Georges',
+                  '97320 Saint-Laurent-du-Maroni',
+                  '97314 Saül',
+                  '97315 Sinnamary']
+          ?>
           <select class="form-control" name="co_borrower_info_municipality">
-              <option value="{{$rd2Caller->rd2brower->municipality}}">{{$rd2Caller->rd2brower->municipality}}</option>
-              <option value="97319 Awala-Yalimapo">97319 Awala-Yalimapo</option>
-              <option value="97330 Camopi">97330 Camopi</option>
-              <option value="97340 Grand-Santi">97340 Grand-Santi</option>
-              <option value="97350 Iracoubo">97350 Iracoubo</option>
-              <option value="97310 Kourou">97310 Kourou</option>
-              <option value="97355 Macouria">97355 Macouria</option>
-              <option value="97318 Mana">97318 Mana</option>
-              <option value="97360">97360</option>
-              <option value="97370 Maripasoula">97370 Maripasoula</option>
-              <option value="97351 Matoury">97351 Matoury</option>
-              <option value="97356 Montsinéry-Tonnegrande">97356 Montsinéry-Tonnegrande</option>
-              <option value="97380 Ouanary">97380 Ouanary</option>
-              <option value="97316 Papaichton">97316 Papaichton</option>
-              <option value="97353 Régina">97353 Régina</option>
-              <option value="97390">97390</option>
-              <option value="97354 Remire-Montjoly">97354 Remire-Montjoly</option>
-              <option value="97311 Roura">97311 Roura</option>
-              <option value="97352">97352</option>
-              <option value="97312 Saint-Élie">97312 Saint-Élie</option>
-              <option value="97313 Saint-Georges">97313 Saint-Georges</option>
-              <option value="97320 Saint-Laurent-du-Maroni">97320 Saint-Laurent-du-Maroni</option>
-              <option value="97314 Saül">97314 Saül</option>
-              <option value="97315 Sinnamary">97315 Sinnamary</option>
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->municipality ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
           </select>
       </div>
 
@@ -109,15 +115,20 @@
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_type_of_contract">Type Of Contract</label>
-          <select class="form-control"  name="co_borrower_info_type_of_contract">
 
-                  <option value="{{$rd2Caller->rd2brower->type_of_contract}}">{{$rd2Caller->rd2brower->type_of_contract}}</option>
-                  <option value="C.D.I">C.D.I</option>
-                  <option value="C.D.D">C.D.D</option>
-                  <option value="CONCTRACTUAL">CONCTRACTUAL</option>
-                  <option value="Official">Official</option>
-                  <option value="GERANT">GERANT</option>
-                  <option value="WITHOUT ACTIVITY">WITHOUT ACTIVITY</option>
+          <?php
+          $all_browers = [
+              'C.D.I',
+              'C.D.D',
+              'CONCTRACTUAL',
+              'Official',
+              'GERANT',
+              'WITHOUT ACTIVITY']
+      ?>
+              <select class="form-control"  name="co_borrower_info_type_of_contract">
+                  @foreach ($all_browers as $b)
+                      <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->type_of_contract ? 'selected' : '' }}>{{$b}}</option>
+                  @endforeach
               </select>
       </div>
 
@@ -127,37 +138,45 @@
           <label class="form-label" for="co_borrower_info_professional_maturity_months">Professional
               Maturity
               Months</label>
+          <?php
+          $all_browers = [
+              '+1',
+              '+2',
+              '+3',
+              '+4',
+              '+5',
+              '+6',
+              '+7',
+              '+8',
+              '+9',
+              '+10',
+              '+11',
+              '+12']
+          ?>
           <select class="form-control" name="co_borrower_info_professional_maturity_months">
-              <option value="{{$rd2Caller->rd2brower->professional_maturity_months}}">{{$rd2Caller->rd2brower->professional_maturity_months}}</option>
-              <option value="+1">+1</option>
-              <option value="+2">+2</option>
-              <option value="+3">+3</option>
-              <option value="+4">+4</option>
-              <option value="+5">+5</option>
-              <option value="+6">+6</option>
-              <option value="+7">+7</option>
-              <option value="+8">+8</option>
-              <option value="+9">+9</option>
-              <option value="+10">+10</option>
-              <option value="+11">+11</option>
-              <option value="+12">+12</option>
-          </select>
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->professional_maturity_months ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_bank_name">Bank Name</label>
+          <?php
+          $all_browers = [
+              'BRED-Banque Populaire',
+              'Savings Bank',
+              'Caisse de Crédit Mutuel',
+              'The Postal Bank',
+              'BNP Paribas Antilles Guyana',
+              'Crédit Agricole Martinique-Guyane',
+              'CASDEN Banque Populaire']
+          ?>
           <select class="form-control" name="co_borrower_info_bank_name">
-              <option value="{{$rd2Caller->rd2brower->bank_name}}">{{$rd2Caller->rd2brower->bank_name}}</option>
-              <option value="BRED-Banque Populaire">BRED-Banque Populaire</option>
-              <option value="Savings Bank">Savings Bank</option>
-              <option value="Caisse de Crédit Mutuel">Caisse de Crédit Mutuel</option>
-              <option value="The Postal Bank">The Postal Bank</option>
-              <option value="BNP Paribas Antilles Guyana">BNP Paribas Antilles Guyana</option>
-              <option value="Crédit Agricole Martinique-Guyane">Crédit Agricole Martinique-Guyane
-              </option>
-              <option value="CASDEN Banque Populaire">CASDEN Banque Populaire</option>
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->bank_name ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
           </select>
       </div>
 
@@ -180,15 +199,20 @@
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_child_dependent_on_tax">Child Dependent On
               Tax</label>
+          <?php
+          $all_browers = [
+              '1',
+              '2',
+              '3',
+              '4',
+              '5',
+              '6',
+              '7']
+          ?>
           <select class="form-control" name="co_borrower_info_child_dependent_on_tax">
-              <option value="{{$rd2Caller->rd2brower->child_dependent_on_tax}}">{{$rd2Caller->rd2brower->child_dependent_on_tax}}</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-              <option value="6">6</option>
-              <option value="7">7</option>
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->child_dependent_on_tax ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
           </select>
       </div>
 
@@ -216,20 +240,26 @@
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_bank_seniority_months">Bank Seniority
               Months</label>
+
+          <?php
+          $all_browers = [
+              '+1',
+              '+2',
+              '+3',
+              '+4',
+              '+5',
+              '+6',
+              '+7',
+              '+8',
+              '+9',
+              '+10',
+              '+11',
+              '+12']
+          ?>
           <select class="form-control" name="co_borrower_info_bank_seniority_months">
-              <option value="{{$rd2Caller->rd2brower->bank_seniority_months}}">{{$rd2Caller->rd2brower->bank_seniority_months}}</option>
-              <option value="+1">+1</option>
-              <option value="+2">+2</option>
-              <option value="+3">+3</option>
-              <option value="+4">+4</option>
-              <option value="+5">+5</option>
-              <option value="+6">+6</option>
-              <option value="+7">+7</option>
-              <option value="+8">+8</option>
-              <option value="+9">+9</option>
-              <option value="+10">+10</option>
-              <option value="+11">+11</option>
-              <option value="+12">+12</option>
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->bank_seniority_months ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
           </select>
       </div>
 
@@ -237,20 +267,26 @@
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_seniority_pel_months">Seniority Pel
               Months</label>
-          <select class="form-control"  name="co_borrower_info_seniority_pel_months">
-              <option value="{{$rd2Caller->rd2brower->seniority_pel_months}}">{{$rd2Caller->rd2brower->seniority_pel_months}}</option>
-              <option value="+1">+1</option>
-              <option value="+2">+2</option>
-              <option value="+3">+3</option>
-              <option value="+4">+4</option>
-              <option value="+5">+5</option>
-              <option value="+6">+6</option>
-              <option value="+7">+7</option>
-              <option value="+8">+8</option>
-              <option value="+9">+9</option>
-              <option value="+10">+10</option>
-              <option value="+11">+11</option>
-              <option value="+12">+12</option>
+
+          <?php
+          $all_browers = [
+              '+1',
+              '+2',
+              '+3',
+              '+4',
+              '+5',
+              '+6',
+              '+7',
+              '+8',
+              '+9',
+              '+10',
+              '+11',
+              '+12']
+          ?>
+          <select class="form-control" name="co_borrower_info_seniority_pel_months">
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->seniority_pel_months ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
           </select>
       </div>
 
@@ -287,13 +323,18 @@
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_family_situation">Family Situation</label>
+          <?php
+          $all_browers = [
+              'Pacified',
+              'Married',
+              'Divorced',
+              'Cohabitation',
+              'Bachelor']
+          ?>
           <select class="form-control"  name="co_borrower_info_family_situation">
-              <option value="{{$rd2Caller->rd2brower->family_situation}}">{{$rd2Caller->rd2brower->family_situation}}</option>
-              <option value="Pacified">Pacified (e)</option>
-              <option value="Married">Married (e)</option>
-              <option value="Divorced">Divorced (é)</option>
-              <option value="Cohabitation">Cohabitation</option>
-              <option value="Bachelor">Bachelor</option>
+              @foreach ($all_browers as $b)
+                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->family_situation ? 'selected' : '' }}>{{$b}}</option>
+              @endforeach
           </select>
       </div>
       <div class="col-md-3">
