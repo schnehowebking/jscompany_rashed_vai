@@ -2,6 +2,8 @@
 
 use App\Models\Setting;
 use Illuminate\Support\Facades\Log;
+use App\Notifications\EmailNotification;
+use Illuminate\Support\Facades\Notification;
 
 function app_setting($setting) {
   $setting = Setting::where('key', $setting)->first();
@@ -55,3 +57,13 @@ function appiontment_reminder_sms($prospect) {
     Log::error($e->getMessage());
   }
 }
+
+function email_notification($to, $message) {
+  $project = [
+      'body' => $message,
+      'thanks' => 'Thank you'
+  ];
+  Notification::send($to, new EmailNotification($project));
+}
+
+
