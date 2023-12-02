@@ -33,7 +33,7 @@ function appiontment_validation_sms($prospect) {
   }
 
   try {
-    email_notification($prospect->email, $message);
+    email_notification($prospect, $message);
   } catch (Exception $e) {
     Log::error("appiontment_validation_email :" .$e->getMessage());
   }
@@ -53,7 +53,7 @@ function appiontment_salesperson_sms($prospect) {
   }
 
   try {
-    email_notification($sales->email, $message);
+    email_notification($sales, $message);
   } catch (Exception $e) {
     Log::error("appiontment_salesperson_mail :" . $e->getMessage());
   }
@@ -72,7 +72,7 @@ function appiontment_reminder_sms($prospect) {
   }
 
   try {
-    email_notification($prospect->email, $message);
+    email_notification($prospect, $message);
   } catch (Exception $e) {
     Log::error("appiontment_reminder_mail :" . $e->getMessage());
   }

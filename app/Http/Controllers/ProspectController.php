@@ -117,8 +117,7 @@ class ProspectController extends Controller
       $prospect->assignment_prospect_rd1_validation = $request->input('assignment_prospect_rd1_validation');
 
       $prospect->save();
-
-      appiontment_validation_sms($prospect);
+       appiontment_validation_sms($prospect);
 
       if ($prospect->assignment_prospect_rd1_validation) {
         appiontment_salesperson_sms($prospect);
@@ -150,6 +149,7 @@ class ProspectController extends Controller
   {
     //
     $prospect = Prospect::find($id);
+    $sales = User::where('role', 'sales')->get();
     return view('backend.prospect.edit', \get_defined_vars());
   }
 

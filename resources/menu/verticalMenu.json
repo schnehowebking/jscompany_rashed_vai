@@ -10,13 +10,15 @@
       "name": "Prospect",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "prospect",
-      "url": "prospect"
+      "url": "prospect",
+      "role": "admin,sales,finance"
     },
     {
       "name": "RD2 Interviews",
       "icon": "menu-icon tf-icons bx bx-user",
       "slug": "rd2interviews",
-      "url": "rd2interviews"
+      "url": "rd2interviews",
+      "role": "admin,sales"
     },
     {
       "name": "Administrative",

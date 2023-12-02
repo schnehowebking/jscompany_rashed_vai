@@ -42,7 +42,7 @@ class EmailNotification extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
       return (new MailMessage)
-        ->greeting($this->project['greeting'])
+        // ->greeting($this->project['greeting'])
         ->line($this->project['body'])
         // ->action($this->project['actionText'], $this->project['actionURL'])
         ->line($this->project['thanks']);

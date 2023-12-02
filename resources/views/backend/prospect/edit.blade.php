@@ -143,27 +143,26 @@
                         <div class="col-md-6">
                             <label class="form-label" for="desired_municipality">Which Cunicipality</label>
                             <select name="desired_municipality" class="form-control">
-                              <option value="{{ $prospect->desired_municipality }}">{{$prospect->desired_municipality}}</option>
-                                <option value="Awala-Yalimapo">Awala-Yalimapo</option>
-                                <option value="Camopi">Camopi</option>
-                                <option value="Grand-Santi">Grand-Santi</option>
-                                <option value="Iracoubo">Iracoubo</option>
-                                <option value="Kourou">Kourou</option>
-                                <option value="Macouria">Macouria</option>
-                                <option value="Mana">Mana</option>
-                                <option value="Maripasoula">Maripasoula</option>
-                                <option value="Matoury">Matoury</option>
-                                <option value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
-                                <option value="Ouanary">Ouanary</option>
-                                <option value="Papaichton">Papaichton</option>
-                                <option value="Reginat">Reginat</option>
-                                <option value="Remire-Montjoly">Remire-Montjoly</option>
-                                <option value="Roura">Roura</option>
-                                <option value="Saint-Élie">Saint-Élie</option>
-                                <option value="Saint-Georges">Saint-Georges</option>
-                                <option value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
-                                <option value="Saul">Saul</option>
-                                <option value="Sinnamary">Sinnamary</option>
+                                <option {{ $prospect->desired_municipality == 'Awala-Yalimapo' ? "selected" : "" }} value="Awala-Yalimapo">Awala-Yalimapo</option>
+                                <option {{ $prospect->desired_municipality == 'Camopi' ? "selected" : "" }} value="Camopi">Camopi</option>
+                                <option {{ $prospect->desired_municipality == 'Grand-Santi' ? "selected" : "" }} value="Grand-Santi">Grand-Santi</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Iracoubo">Iracoubo</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Kourou">Kourou</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Macouria">Macouria</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Mana">Mana</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Maripasoula">Maripasoula</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Matoury">Matoury</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Ouanary">Ouanary</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Papaichton">Papaichton</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Reginat">Reginat</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Remire-Montjoly">Remire-Montjoly</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Roura">Roura</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saint-Élie">Saint-Élie</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saint-Georges">Saint-Georges</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saul">Saul</option>
+                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Sinnamary">Sinnamary</option>
                             </select>
                         </div>
                     </div>
@@ -177,9 +176,8 @@
                             <label class="form-label" for="financial_simulation">DO YOU HAVE A FINANCIAL
                                 SIMULATION?</label>
                             <select name="financial_simulation" class="form-control">
-                                <option value="{{$prospect->financial_simulation}}">{{$prospect->financial_simulation}}</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option {{ $prospect->financial_simulation == 1 ? 'selected' : "" }} value="1">Yes</option>
+                                <option {{ $prospect->financial_simulation == 0 ? 'selected' : "" }} value="0">No</option>
                             </select>
                         </div>
 
@@ -192,15 +190,14 @@
                         <div class="col-md-4 col-sm-6">
                             <label class="form-label" for="simulation_bank">What is the bank?</label>
                             <select class="form-control " name="simulation_bank">
-                                <option value="{{$prospect->simulation_bank}}">{{$prospect->simulation_bank}}</option>
-                                <option value="BRED-Banque Populaire">BRED-Banque Populaire</option>
-                                <option value="Savings Bank">Savings Bank</option>
-                                <option value="Caisse de Crédit Mutuel">Caisse de Crédit Mutuel</option>
-                                <option value="The Postal Bank">The Postal Bank</option>
-                                <option value="BNP Paribas Antilles Guyana">BNP Paribas Antilles Guyana</option>
-                                <option value="Crédit Agricole Martinique-Guyane">Crédit Agricole Martinique-Guyane
+                                <option {{$prospect->simulation_bank == 'BRED-Banque Populaire' ? 'selected' : ''}} value="BRED-Banque Populaire">BRED-Banque Populaire</option>
+                                <option {{$prospect->simulation_bank == 'Savings Bank' ? 'selected' : ''}} value="Savings Bank">Savings Bank</option>
+                                <option {{$prospect->simulation_bank == 'Caisse de Crédit Mutuel' ? 'selected' : ''}} value="Caisse de Crédit Mutuel">Caisse de Crédit Mutuel</option>
+                                <option {{$prospect->simulation_bank == 'The Postal Bank' ? 'selected' : ''}} value="The Postal Bank">The Postal Bank</option>
+                                <option {{$prospect->simulation_bank == 'BNP Paribas Antilles Guyana' ? 'selected' : ''}} value="BNP Paribas Antilles Guyana">BNP Paribas Antilles Guyana</option>
+                                <option {{$prospect->simulation_bank == 'Crédit Agricole Martinique-Guyane' ? 'selected' : ''}} value="Crédit Agricole Martinique-Guyane">Crédit Agricole Martinique-Guyane
                                 </option>
-                                <option value="CASDEN Banque Populaire">CASDEN Banque Populaire</option>
+                                <option {{$prospect->simulation_bank == 'CASDEN Banque Populaire' ? 'selected' : ''}} value="CASDEN Banque Populaire">CASDEN Banque Populaire</option>
                             </select>
                         </div>
                         <div class="col-md-4 col-sm-6">
@@ -220,19 +217,18 @@
                         <div class="col-md-3">
                             <label class="form-label" for="how_know_company">HOW DO YOU KNOW OUR COMPANY?</label>
                             <select class="form-control" name="how_know_company">
-                                <option value="{{$prospect->how_know_company}}">{{$prospect->how_know_company}}</option>
-                                <option value="Whats App">Whats App</option>
-                                <option value="Telephone">Telephone</option>
-                                <option value="Instagrams">Instagrams</option>
-                                <option value="Facebook">Facebook</option>
-                                <option value="Cinema">Cinema</option>
-                                <option value="Paper ad">Paper ads</option>
-                                <option value="Sign">Sign</option>
-                                <option value="4x3 panel">4x3 panel</option>
-                                <option value="Construction panel">Construction panel</option>
-                                <option value="Word of mouth">Word of mouth</option>
-                                <option value="Sponsorship">Sponsorship</option>
-                                <option value="Others">Others (to be defined)</option>
+                                <option {{ $prospect->how_know_company == 'Whats App' ? 'selected' : "" }} value="Whats App">Whats App</option>
+                                <option {{ $prospect->how_know_company == 'Telephone' ? 'selected' : "" }} value="Telephone">Telephone</option>
+                                <option {{ $prospect->how_know_company == 'Instagrams' ? 'selected' : "" }} value="Instagrams">Instagrams</option>
+                                <option {{ $prospect->how_know_company == 'Facebook' ? 'selected' : "" }} value="Facebook">Facebook</option>
+                                <option {{ $prospect->how_know_company == 'Cinema' ? 'selected' : "" }} value="Cinema">Cinema</option>
+                                <option {{ $prospect->how_know_company == 'Paper ad' ? 'selected' : "" }} value="Paper ad">Paper ads</option>
+                                <option {{ $prospect->how_know_company == 'Sign' ? 'selected' : "" }} value="Sign">Sign</option>
+                                <option {{ $prospect->how_know_company == '4x3 panel' ? 'selected' : "" }} value="4x3 panel">4x3 panel</option>
+                                <option {{ $prospect->how_know_company == 'Construction panel' ? 'selected' : "" }} value="Construction panel">Construction panel</option>
+                                <option {{ $prospect->how_know_company == 'Word of mouth' ? 'selected' : "" }} value="Word of mouth">Word of mouth</option>
+                                <option {{ $prospect->how_know_company == 'Sponsorship' ? 'selected' : "" }} value="Sponsorship">Sponsorship</option>
+                                <option {{ $prospect->how_know_company == 'Others' ? 'selected' : "" }} value="Others">Others (to be defined)</option>
                             </select>
 
                         </div>
@@ -245,46 +241,22 @@
                         <div class="col-md-4">
                             <label class="form-label" for="interlocutor_appointment">Appointment With</label>
                             <select class="form-control " name="interlocutor_appointment">
-                                <option value="{{$prospect->interlocutor_appointment}}">{{$prospect->interlocutor_appointment}}</option>
-                                <option value="secretariat">Secretariat</option>
-                                <option value="respVente">Resp.Vente</option>
-                                <option value="seller1">Seller 1</option>
-                                <option value="seller2">Seller 2</option>
-                                <option value="draftsman1">Draftsman 1</option>
-                                <option value="draftsman2">Draftsman 2</option>
-                                <option value="siteManager1">Site manager 1</option>
-                                <option value="siteManager2">Site manager 2</option>
-                                <option value="constructionManager1">Construction manager 1</option>
-                                <option value="constructionManager2">Construction manager 2</option>
-                                <option value="financialResp">Financial resp.</option>
-                                <option value="pdg">P.D.G</option>
+                              @foreach ($sales as $sale)
+                              <option value="{{ $sale->id }}" {{$sale->id == $prospect->interlocutor_appointment ? 'selected' : ""}}>{{ $sale->name }}</option>
+                              @endforeach
                             </select>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="exchange_validated_by">exchange_validated_by</label>
-                            <select class="form-control" name="exchange_validated_by">
-                                <option value="{{$prospect->exchange_validated_by}}">{{$prospect->exchange_validated_by}}</option>
-                                <option value="secretariat">Secretariat</option>
-                                <option value="respVente">Resp.Vente</option>
-                                <option value="seller1">Seller 1</option>
-                                <option value="seller2">Seller 2</option>
-                                <option value="draftsman1">Draftsman 1</option>
-                                <option value="draftsman2">Draftsman 2</option>
-                                <option value="siteManager1">Site manager 1</option>
-                                <option value="siteManager2">Site manager 2</option>
-                                <option value="constructionManager1">Construction manager 1</option>
-                                <option value="constructionManager2">Construction manager 2</option>
-                                <option value="financialResp">Financial resp.</option>
-                                <option value="pdg">P.D.G</option>
-                            </select>
+                            <input type="text" class="form-control" value="{{$prospect->exchange_validated_by}}" disabled>
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="assignment_prospect_rd1_validation">VALIDATE THE
                                 ASSIGNMENT PROSPECT -RD 1</label>
                             <select class="form-control" name="assignment_prospect_rd1_validation">
-                                <option value="{{$prospect->assignment_prospect_rd1_validation}}">{{$prospect->assignment_prospect_rd1_validation}}</option>
-                                <option value="1">Yes</option>
-                                <option value="0">No</option>
+                                <option>Select</option>
+                                <option value="1" {{$prospect->assignment_prospect_rd1_validation == 1 ? "selected" : ""}}>Yes</option>
+                                <option value="0" {{$prospect->assignment_prospect_rd1_validation == 0 ? "selected" : ""}}>No</option>
                             </select>
                         </div>
                     </div>

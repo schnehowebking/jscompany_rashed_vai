@@ -62,7 +62,7 @@
         <div class="col-sm-10">
           <select name="role" id="role" class="form-control">
             <option value="sales" {{ $admin->role == 'sales' ? "selected" : '' }}>Sales</option>
-            <option value="finance" {{ $admin->role == 'finance' ? "selected" : '' }}>Finance</option>
+            <option value="finance" {{ $admin->role == 'finance' ? "selected" : '' }}>Secretry</option>
             <option value="admin" {{ $admin->role == 'admin' ? "selected" : '' }}>Admin</option>
           </select>
         </div>

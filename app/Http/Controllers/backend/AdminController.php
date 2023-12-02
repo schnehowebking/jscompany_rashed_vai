@@ -27,7 +27,7 @@ class AdminController extends Controller
             return $html;
           })
           ->addColumn('role', function($user) {
-            return "<span class='badge bg-primary'>".ucfirst($user->role)."</span>";
+            return "<span class='badge bg-primary'>".ucfirst($user->role == 'finance' ? "Secretry" : $user->role)."</span>";
           })
           ->rawColumns(['action', 'role'])
           ->make(true);

@@ -14,11 +14,11 @@
 @section('content')
     <div class="row">
       <!-- Referral Chart-->
-      <div class="col-sm-3 col-6 mb-4">
+      <div class="col-12 mb-4">
         <div class="card">
           <div class="card-body text-center">
-            <h2 class="mb-1">Applications</h2>
-            <span class="text-muted">Total : </span>
+            <h2 class="mb-1">Welcome to JSGroupCompany</h2>
+            {{-- <span class="text-muted">Total : </span> --}}
             <div id="referralLineChart"></div>
           </div>
         </div>
