@@ -52,7 +52,7 @@ class Rd2InterviewController extends Controller
    * @param  \Illuminate\Http\Request  $request
    * @return \Illuminate\Http\Response
    */
-  public function store(Request $request )
+  public function store(Request $request)
   {
     //
     $id = $request->input('prospect_id');
@@ -166,7 +166,7 @@ class Rd2InterviewController extends Controller
     $householdResourceCapacity->financial_capacity_of_household =
       $request->input('household_resource_financial_capacity_of_household');
 
-      $householdResourceCapacity->save();
+    $householdResourceCapacity->save();
 
     // householdDocument
     $householdDocument = new HouseholdDuctment();
@@ -230,30 +230,47 @@ class Rd2InterviewController extends Controller
    * @param  int  $id
    * @return \Illuminate\Http\Response
    */
+  // public function edit($id)
+  // {
+  //     $prospect = Prospect::find($id);
+  //     $rd2caller = $prospect->rd2Caller;
+  //     $rd2brower = $rd2caller->rd2brower;
+  //     $landChargeInfo = $prospect->landChargeInfo;
+  //     $householdResourceCapacity = $prospect->householdResourceCapacity;
+  //     $householdDocument = $prospect->householdDocument;
+  //     $financingCondition = $prospect->financingCondition;
+  //     $projectFinancing = $prospect->projectFinancing;
+
+  //     return view(
+  //         'backend.rd2interviews.edit',
+  //         compact(
+  //             'prospect',
+  //             'rd2caller',
+  //             'rd2brower',
+  //             'landChargeInfo',
+  //             'householdResourceCapacity',
+  //             'householdDocument',
+  //             'financingCondition',
+  //             'projectFinancing'
+  //         )
+  //     );
+  // }
+
+
   public function edit($id)
   {
-      $prospect = Prospect::find($id);
-      $rd2caller = $prospect->rd2Caller;
-      $rd2brower = $rd2caller->rd2brower;
-      $landChargeInfo = $prospect->landChargeInfo;
-      $householdResourceCapacity = $prospect->householdResourceCapacity;
-      $householdDocument = $prospect->householdDocument;
-      $financingCondition = $prospect->financingCondition;
-      $projectFinancing = $prospect->projectFinancing;
+    $prospect = Prospect::with([
+      'rd2Caller',
+      // 'rd2Caller.rd2brower',
+      'landChargeInfo',
+      'householdResourceCapacity',
+      'householdDocument',
+      'financingCondition',
+      'projectFinancing'
+    ])->find($id);
 
-      return view(
-          'backend.rd2interviews.edit',
-          compact(
-              'prospect',
-              'rd2caller',
-              'rd2brower',
-              'landChargeInfo',
-              'householdResourceCapacity',
-              'householdDocument',
-              'financingCondition',
-              'projectFinancing'
-          )
-      );
+    return $prospect->rd2Caller();
+    return view('backend.rd2interviews.edit', compact('prospect'));
   }
 
   /**

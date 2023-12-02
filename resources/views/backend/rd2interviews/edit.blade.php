@@ -28,10 +28,10 @@
 
         <!-- Default Icons Wizard -->
         <div class="col-12">
-            <form action="{{ route('rd2interviews.update', $id) }}" method="POST">
+            <form action="{{ route('rd2interviews.update', $prospect->id) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <input type="hidden" name="prospect_id" value="{{ $id }}">
+                <input type="hidden" name="prospect_id" value="{{ $prospect->id }}">
 
                 <div class="content-header mb-3">
                     <h4 class="mb-0">STEP-1: WEAR INFORMATION AND TEAR</h4>
@@ -46,7 +46,7 @@
                         <div class="row mt-2">
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_name_or_ste">Name</label>
-                                <input type="text" name="caller_info_name_or_ste" class="form-control" required />
+                                <input type="text" name="caller_info_name_or_ste" value="{{$prospect->rd2Caller->name_or_ste}}" class="form-control" required />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_first_name">First Name</label>
@@ -172,7 +172,7 @@
                         <div class="row mt-2">
                             <div class="col-md-3">
                                 <label class="form-label" for="co_borrower_info_name_or_ste">Bank Name</label>
-                                <input type="text" class="form-control" name="co_borrower_info_name_or_ste">
+                                <input type="text" class="form-control" name="co_borrower_info_name_or_ste" value="{{ $prospect->rd2Caller->rd2brower->name_or_ste }}">
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="co_borrower_info_first_name">First Name</label>

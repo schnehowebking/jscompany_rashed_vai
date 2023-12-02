@@ -17,6 +17,6 @@ class Rd_2_Caller extends Model
   }
   public function rd2brower()
   {
-    return $this->hasOne(Rd_2_brower::class);
+    return $this->hasOne(Rd_2_brower::class,);
   }
 }

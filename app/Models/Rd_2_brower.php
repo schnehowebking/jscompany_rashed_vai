@@ -12,6 +12,6 @@ class Rd_2_brower extends Model
 
   public function rd2Caller()
   {
-    return $this->belongsTo(Rd_2_Caller::class, 'caller_id');
+    return $this->belongsTo(Rd_2_Caller::class, 'rd_2_caller_id');
   }
 }
