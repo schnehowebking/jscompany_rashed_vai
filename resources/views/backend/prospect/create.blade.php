@@ -247,7 +247,7 @@
                         </div>
                         <div class="col-md-4">
                             <label class="form-label" for="exchange_validated_by">Exchange Validated By</label>
-                            <input type="text" class="form-control" value="{{Auth::user()->name}}">
+                            <input type="text" disabled class="form-control" value="{{Auth::user()->name}}">
                             {{-- <select class="form-control" name="exchange_validated_by">
                                 <option value="">Select One</option>
                                 <option value="secretariat">Secretariat</option>
