@@ -28,6 +28,12 @@
         </div>
       </div>
       <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="basic-default-phone">Phone</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" value="{{ $admin->phone }}" name="phone" id="basic-default-phone" placeholder="+15......." />
+        </div>
+      </div>
+      <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="user_name">User name</label>
         <div class="col-sm-10">
           <input type="text" class="form-control" value="{{ $admin->username }}" name="user_name" id="user_name" placeholder="username_here" />

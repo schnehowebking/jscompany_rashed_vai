@@ -33,6 +33,12 @@
         </div>
       </div>
       <div class="row mb-3">
+        <label class="col-sm-2 col-form-label" for="phone">User name</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" name="phone" id="phone" placeholder="mobile number here" />
+        </div>
+      </div>
+      <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="basic-default-email">Email</label>
         <div class="col-sm-10">
             <input type="email" id="basic-default-email" name="email" class="form-control" placeholder="email@email.com"/>
@@ -54,9 +60,9 @@
         <label class="col-sm-2 col-form-label" for="role">Role</label>
         <div class="col-sm-10">
           <select name="role" id="role" class="form-control">
-            <option value="sales">Sales</option>
-            <option value="finance">Finance</option>
             <option value="admin">Admin</option>
+            <option value="sales">Sales Person</option>
+            <option value="finance">Secretry</option>
           </select>
         </div>
       </div>

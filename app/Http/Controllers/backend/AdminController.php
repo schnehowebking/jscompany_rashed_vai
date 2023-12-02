@@ -56,6 +56,7 @@ class AdminController extends Controller
       $admin = User::create([
         'name' => $request->full_name,
         'user_name' => $request->user_name,
+        'phone' => $request->phone,
         'email' => $request->email,
         'password' => Hash::make($request->password),
         'role' => $request->role,
@@ -99,6 +100,7 @@ class AdminController extends Controller
       $admin = User::find($id)->update([
         'name' => $request->full_name,
         'user_name' => $request->user_name,
+        'phone' => $request->phone,
         'email' => $request->email,
         'role' => $request->role,
       ]);
