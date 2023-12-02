@@ -36,7 +36,7 @@
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="user_name">User name</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" value="{{ $admin->username }}" name="user_name" id="user_name" placeholder="username_here" />
+          <input type="text" class="form-control" value="{{ $admin->user_name }}" name="user_name" id="user_name" placeholder="username_here" />
         </div>
       </div>
       <div class="row mb-3">
