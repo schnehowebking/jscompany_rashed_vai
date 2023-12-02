@@ -14,12 +14,12 @@ class Kernel extends ConsoleKernel
      * @return void
      */
     protected $commands = [
-      Commands\ApplicationRemove::class,
+      Commands\checkReminder::class
   ];
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('remove:application')
+        $schedule->command('check:reminder')
                  ->everyFifteenMinutes();
     }
 
