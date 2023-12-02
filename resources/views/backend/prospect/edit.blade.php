@@ -146,23 +146,23 @@
                                 <option {{ $prospect->desired_municipality == 'Awala-Yalimapo' ? "selected" : "" }} value="Awala-Yalimapo">Awala-Yalimapo</option>
                                 <option {{ $prospect->desired_municipality == 'Camopi' ? "selected" : "" }} value="Camopi">Camopi</option>
                                 <option {{ $prospect->desired_municipality == 'Grand-Santi' ? "selected" : "" }} value="Grand-Santi">Grand-Santi</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Iracoubo">Iracoubo</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Kourou">Kourou</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Macouria">Macouria</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Mana">Mana</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Maripasoula">Maripasoula</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Matoury">Matoury</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Ouanary">Ouanary</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Papaichton">Papaichton</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Reginat">Reginat</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Remire-Montjoly">Remire-Montjoly</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Roura">Roura</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saint-Élie">Saint-Élie</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saint-Georges">Saint-Georges</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Saul">Saul</option>
-                                <option {{ $prospect->desired_municipality == '' ? "selected" : "" }} value="Sinnamary">Sinnamary</option>
+                                <option {{ $prospect->desired_municipality == 'Iracoubo' ? "selected" : "" }} value="Iracoubo">Iracoubo</option>
+                                <option {{ $prospect->desired_municipality == 'Kourou' ? "selected" : "" }} value="Kourou">Kourou</option>
+                                <option {{ $prospect->desired_municipality == 'Macouria' ? "selected" : "" }} value="Macouria">Macouria</option>
+                                <option {{ $prospect->desired_municipality == 'Mana' ? "selected" : "" }} value="Mana">Mana</option>
+                                <option {{ $prospect->desired_municipality == 'Maripasoula' ? "selected" : "" }} value="Maripasoula">Maripasoula</option>
+                                <option {{ $prospect->desired_municipality == 'Matoury' ? "selected" : "" }} value="Matoury">Matoury</option>
+                                <option {{ $prospect->desired_municipality == 'Montsinéry-Tonnegrande' ? "selected" : "" }} value="Montsinéry-Tonnegrande">Montsinéry-Tonnegrande</option>
+                                <option {{ $prospect->desired_municipality == 'Ouanary' ? "selected" : "" }} value="Ouanary">Ouanary</option>
+                                <option {{ $prospect->desired_municipality == 'Papaichton' ? "selected" : "" }} value="Papaichton">Papaichton</option>
+                                <option {{ $prospect->desired_municipality == 'Reginat' ? "selected" : "" }} value="Reginat">Reginat</option>
+                                <option {{ $prospect->desired_municipality == 'Remire-Montjoly' ? "selected" : "" }} value="Remire-Montjoly">Remire-Montjoly</option>
+                                <option {{ $prospect->desired_municipality == 'Roura' ? "selected" : "" }} value="Roura">Roura</option>
+                                <option {{ $prospect->desired_municipality == 'Saint-Élie' ? "selected" : "" }} value="Saint-Élie">Saint-Élie</option>
+                                <option {{ $prospect->desired_municipality == 'Saint-Georges' ? "selected" : "" }} value="Saint-Georges">Saint-Georges</option>
+                                <option {{ $prospect->desired_municipality == 'Saint-Laurent-du-Maroni' ? "selected" : "" }} value="Saint-Laurent-du-Maroni">Saint-Laurent-du-Maroni</option>
+                                <option {{ $prospect->desired_municipality == 'Saul' ? "selected" : "" }} value="Saul">Saul</option>
+                                <option {{ $prospect->desired_municipality == 'Sinnamary' ? "selected" : "" }} value="Sinnamary">Sinnamary</option>
                             </select>
                         </div>
                     </div>
