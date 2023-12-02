@@ -10,6 +10,7 @@ class Rd_2_Caller extends Model
   use HasFactory;
 
   protected $guarded = [];
+  protected $table = "rd_2__callers";
 
   public function prospect()
   {
@@ -17,6 +18,6 @@ class Rd_2_Caller extends Model
   }
   public function rd2brower()
   {
-    return $this->hasOne(Rd_2_brower::class,);
+    return $this->hasOne(Rd_2_brower::class, 'rd_2_caller_id');
   }
 }

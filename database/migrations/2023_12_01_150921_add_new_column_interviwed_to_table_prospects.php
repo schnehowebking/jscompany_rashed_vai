@@ -27,7 +27,7 @@ return new class extends Migration
     {
         Schema::table('prospects', function (Blueprint $table) {
             //
-            Schema::dropColumns('interviewed');
+            // Schema::dropColumns('interviewed');
         });
     }
 };

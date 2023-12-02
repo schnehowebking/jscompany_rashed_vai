@@ -261,7 +261,7 @@ class Rd2InterviewController extends Controller
   {
     $prospect = Prospect::with([
       'rd2Caller',
-      // 'rd2Caller.rd2brower',
+      'rd2Caller.rd2brower',
       'landChargeInfo',
       'householdResourceCapacity',
       'householdDocument',
@@ -269,7 +269,7 @@ class Rd2InterviewController extends Controller
       'projectFinancing'
     ])->find($id);
 
-    return $prospect->rd2Caller();
+    return $prospect;
     return view('backend.rd2interviews.edit', compact('prospect'));
   }
 

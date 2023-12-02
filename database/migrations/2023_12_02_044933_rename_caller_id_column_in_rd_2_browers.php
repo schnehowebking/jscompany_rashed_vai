@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('rd_2_browers', function (Blueprint $table) {
             //
-            $table->renameColumn('caller_id', 'rd_2__caller_id');
+            // $table->renameColumn('caller_id', 'rd_2__caller_id');
         });
     }
 

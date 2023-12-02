@@ -16,7 +16,7 @@ class Prospect extends Model
   // relationships with other models
   public function rd2Caller()
   {
-    return $this->hasOne(Rd_2_Caller::class);
+    return $this->hasOne(Rd_2_Caller::class, 'prospect_id');
   }
 
   public function landChargeInfo()

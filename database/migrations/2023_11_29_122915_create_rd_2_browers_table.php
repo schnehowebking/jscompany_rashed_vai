@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('rd_2_browers', function (Blueprint $table) {
           $table->id();
-          $table->foreignId('caller_id')->constrained('rd_2__callers');
+          $table->foreignId('rd_2__caller_id')->constrained('rd_2__callers');
           $table->string('name_or_ste')->nullable();
           $table->string('first_name')->nullable();
           $table->string('current_address')->nullable();
