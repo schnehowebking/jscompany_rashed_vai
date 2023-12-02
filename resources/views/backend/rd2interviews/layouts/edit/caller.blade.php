@@ -1,4 +1,4 @@
-<div id="" class="content mt-2 col-md-6">
+<div id="" class="content mt-2 col-12">
     <div class="content-header mb-3">
         <h6 class="mb-0">1(a)Caller's information</h6>
     </div>

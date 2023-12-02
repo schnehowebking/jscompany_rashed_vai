@@ -85,5 +85,13 @@
               value="{{$prospect->projectFinancing->total_financing_of_project}}" name="project_financing_total_financing_of_project">
       </div>
 
+
+
   </div>
+
+  <div class="row g-3 mt-2">
+    <div class="col-md-3">
+        <input type="submit" class="btn btn-primary" value="Update">
+    </div>
+</div>
 </div>

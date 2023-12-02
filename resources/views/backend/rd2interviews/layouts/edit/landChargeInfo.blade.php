@@ -1,4 +1,4 @@
-<div class="content mt-2 col-md-6">
+<div class="content mt-2 col-12">
   <div class="content-header mb-3">
       <h4 class="mb-0">STEP-2: LAND CHARGE INFORMATION</h4>
       <small>Enter LAND CHARGE INFORMATION Details.</small>

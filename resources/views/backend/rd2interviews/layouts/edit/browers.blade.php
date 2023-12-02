@@ -1,4 +1,4 @@
-<div class="content mt-2 col-md-6">
+<div class="content mt-2 col-12">
   <div class="content-header mb-3">
       <h6 class="mb-0">1(b)Co-borrower's information</h6>
   </div>
@@ -157,6 +157,7 @@
               @foreach ($all_browers as $b)
                   <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->professional_maturity_months ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
+          </select>
       </div>
 
 
