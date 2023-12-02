@@ -3,11 +3,8 @@
 namespace App\Http\Controllers;
 
 use Log;
-
 use App\Models\Prospect;
 use Illuminate\Http\Request;
-
-
 use Yajra\DataTables\DataTables;
 use Illuminate\Support\Facades\DB;
 
@@ -120,29 +117,10 @@ class ProspectController extends Controller
 
       $prospect->save();
 
-      try {
-        $sms = new \App\TwilioHelper();
-        $message = app_setting('appiontment_validation_sms');
-        $message = str_replace('{customer_name}', $prospect->name, $message);
-        $message = str_replace('{appointment_date}', $prospect->desired_rd1_date, $message);
-        $message = str_replace('{appointment_time}', $prospect->desired_rd1_time, $message);
-        $sms->sendSMS($prospect->telephone_prospect_1, $message);
-      } catch (\Exception $e) {
-        Log::error($e->getMessage());
-      }
+      appiontment_validation_sms($prospect);
 
-      // send sms to sales person if the propect is valided
       if ($prospect->assignment_prospect_rd1_validation) {
-        try {
-          $sms = new \App\TwilioHelper();
-          $message = app_setting('appiontment_salesperson_sms');
-          $message = str_replace('{sales_person}', $prospect->interlocutor_appointment, $message);
-          $message = str_replace('{customer_name}', $prospect->name, $message);
-          $message = str_replace('{appointment_time}', $prospect->desired_rd1_time, $message);
-          $sms->sendSMS(app_setting('sales_person_phone'), $message);
-        } catch (\Exception $e) {
-          Log::error($e->getMessage());
-        }
+        appiontment_salesperson_sms($prospect);
       }
 
       return redirect()
@@ -221,8 +199,6 @@ class ProspectController extends Controller
    */
   public function destroy($id)
   {
-    //
-
     $prospect = Prospect::find($id);
     $prospect->delete();
     return \redirect()->route('prospect.index')->withSuccess("User removed successfully");
