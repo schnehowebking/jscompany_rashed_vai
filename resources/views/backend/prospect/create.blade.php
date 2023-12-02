@@ -238,7 +238,7 @@
                     <div class="row g-3">
                         <div class="col-md-4">
                             <label class="form-label" for="interlocutor_appointment">Appointment With</label>
-                            <select class="form-control " name="interlocutor_appointment" required>
+                            <select class="form-control " name="interlocutor_appointment" >
                                 <option value="">Select One</option>
                                 @foreach ($sales as $sale)
                                   <option value="{{ $sale->id }}">{{ $sale->name }}</option>
