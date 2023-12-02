@@ -33,36 +33,80 @@
                 @method('PUT')
                 <input type="hidden" name="prospect_id" value="{{ $prospect->id }}">
 
-                <div class="content-header mb-3">
-                  <h4 class="mb-0">STEP-1: WEAR INFORMATION AND TEAR</h4>
-                  <small>Enter WEAR INFORMATION AND TEAR</small>
-              </div>
-              <!-- Account Details -->
-              <div class="row ">
-                 @include('backend.rd2interviews.layouts.edit.caller')
-                 @include('backend.rd2interviews.layouts.edit.browers')
+                <div class="nav-align-top mb-4">
+                    <ul class="nav nav-tabs" role="tablist">
+                        <li class="nav-item">
+                            <button type="button" class="nav-link active" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-caller" aria-controls="navs-top-caller" aria-selected="true">Step
+                                1</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-cobrower" aria-controls="navs-top-cobrower"
+                                aria-selected="false">Step 2</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-landcharge" aria-controls="navs-top-landcharge"
+                                aria-selected="false">Step 3</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-householdresource" aria-controls="navs-top-householdresource"
+                                aria-selected="false">Step 4</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-householddocs" aria-controls="navs-top-householddocs"
+                                aria-selected="false">Step 5</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-financialconds" aria-controls="navs-top-financialconds"
+                                aria-selected="false">Step 6</button>
+                        </li>
+                        <li class="nav-item">
+                            <button type="button" class="nav-link" role="tab" data-bs-toggle="tab"
+                                data-bs-target="#navs-top-projectfinc" aria-controls="navs-top-projectfinc"
+                                aria-selected="false">Step 7</button>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane fade show active" id="navs-top-caller" role="tabpanel">
 
-              </div>
-              <hr />
+                            @include('backend.rd2interviews.layouts.edit.caller')
 
-              <div class="row mt-2">
-                @include('backend.rd2interviews.layouts.edit.landChargeInfo')
-                  @include('backend.rd2interviews.layouts.edit.householdResourceCapacity')
-              </div>
-              <hr />
-              <div class="row mt-2">
-                @include('backend.rd2interviews.layouts.edit.householdDocument')
 
-                @include('backend.rd2interviews.layouts.edit.financingCondition')
-              </div>
-              <hr />
-             @include('backend.rd2interviews.layouts.edit.projectFinancing')
-              <hr />
-              <div class="row g-3 mt-2">
-                  <div class="col-md-3">
-                      <input type="submit" class="btn btn-primary" value="Submit">
-                  </div>
-              </div>
+                        </div>
+                        <div class="tab-pane fade" id="navs-top-cobrower" role="tabpanel">
+                            @include('backend.rd2interviews.layouts.edit.browers')
+                        </div>
+                        <div class="tab-pane fade" id="navs-top-landcharge" role="tabpanel">
+
+                            @include('backend.rd2interviews.layouts.edit.landChargeInfo')
+                        </div>
+                        <div class="tab-pane fade" id="navs-top-householdresource" role="tabpanel">
+
+
+                            @include('backend.rd2interviews.layouts.edit.householdResourceCapacity')
+
+                        </div>
+                        <div class="tab-pane fade" id="navs-top-householddocs" role="tabpanel">
+
+                            @include('backend.rd2interviews.layouts.edit.householdDocument')
+
+                        </div>
+                        <div class="tab-pane fade" id="navs-top-financialconds" role="tabpanel">
+                            @include('backend.rd2interviews.layouts.edit.financingCondition')
+
+                        </div>
+                        <div class="tab-pane fade" id="navs-top-projectfinc" role="tabpanel">
+                            @include('backend.rd2interviews.layouts.edit.projectFinancing')
+                        </div>
+                    </div>
+                </div>
+
+
 
 
             </form>
