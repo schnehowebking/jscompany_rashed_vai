@@ -8,7 +8,7 @@
 </h4>
 
 <div class="card">
-  <h5 class="card-header d-flex justify-content-between"><span>RD2 Interviewed</span> <a href="{{ route('prospect.create') }}">Add New Prospect</a></h5>
+  <h5 class="card-header d-flex justify-content-between"><span>Prospect</span> <a href="{{ route('prospect.create') }}">Add New Prospect</a></h5>
   <!--Search Form -->
   <hr class="mt-0">
   <div class="card-datatable table-responsive">

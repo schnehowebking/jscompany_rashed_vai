@@ -28,9 +28,10 @@
 
         <!-- Default Icons Wizard -->
         <div class="col-12">
-            <form action="{{ route('rd2interviews.store', $id) }}" method="POST">
+
+
+            <form action="{{ route('rd2interviews.store') }}" method="POST">
                 @csrf
-                @method('PUT')
                 <input type="hidden" name="prospect_id" value="{{ $id }}">
 
                 <div class="content-header mb-3">
@@ -46,31 +47,31 @@
                         <div class="row mt-2">
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_name_or_ste">Name</label>
-                                <input type="text" name="caller_info_name_or_ste" class="form-control" required />
+                                <input type="text" name="caller_info_name_or_ste" class="form-control"  />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_first_name">First Name</label>
-                                <input type="text" name="caller_info_first_name" class="form-control" required />
+                                <input type="text" name="caller_info_first_name" class="form-control"  />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_current_address">Current Address</label>
-                                <input type="text" name="caller_info_current_address" class="form-control" required />
+                                <input type="text" name="caller_info_current_address" class="form-control"  />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_municipality">Municipility</label>
-                                <input type="text" name="caller_info_municipality" class="form-control" required />
+                                <input type="text" name="caller_info_municipality" class="form-control"  />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_mobile_phone">Mobile Phone</label>
-                                <input type="text" name="caller_info_mobile_phone" class="form-control" required />
+                                <input type="text" name="caller_info_mobile_phone" class="form-control"  />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_landline_phone">Landline Phone</label>
-                                <input type="text" name="caller_info_landline_phone" class="form-control" required />
+                                <input type="text" name="caller_info_landline_phone" class="form-control"  />
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_date_of_birth">Date of Birth</label>
-                                <input type="text" class="form-control datepicker" name="caller_info_date_of_birth">
+                                <input type="date" class="form-control datepicker" name="caller_info_date_of_birth">
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_place_of_birth">Place of Birth</label>
@@ -99,7 +100,7 @@
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_professional_maturity_months">Professional Maturity
                                     Months</label>
-                                <input type="text" class="form-control" name="caller_info_professional_maturity_months">
+                                <input type="number" class="form-control" name="caller_info_professional_maturity_months">
                             </div>
                             <div class="col-md-3">
                                 <label class="form-label" for="caller_info_bank_name">Bank Name</label>
@@ -208,7 +209,7 @@
 
                             <div class="col-md-3">
                                 <label class="form-label" for="co_borrower_info_date_of_birth">Date Of Birth</label>
-                                <input type="text" class="form-control" name="co_borrower_info_date_of_birth">
+                                <input type="date" class="form-control" name="co_borrower_info_date_of_birth">
                             </div>
 
 
@@ -258,7 +259,7 @@
                             <div class="col-md-3">
                                 <label class="form-label" for="co_borrower_info_professional_maturity_months">Professional Maturity
                                     Months</label>
-                                <input type="text" class="form-control" name="co_borrower_info_professional_maturity_months">
+                                <input type="number" class="form-control" name="co_borrower_info_professional_maturity_months">
                             </div>
 
 
