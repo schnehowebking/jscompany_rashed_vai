@@ -9,31 +9,31 @@
               Debt Before
               Credit</label>
           <input type="number" class="form-control"
-              value="{{$householdDocument->eligible_debt_before_credit}}" name="household_document_eligible_debt_before_credit">
+              value="{{$prospect->householdDocument->eligible_debt_before_credit}}" name="household_document_eligible_debt_before_credit">
       </div>
 
       <div class="col-md-3">
           <label class="form-label" for="household_document_current_credit">Current Credit</label>
-          <input type="number" class="form-control" value="{{$householdDocument->current_credit}}" name="household_document_current_credit">
+          <input type="number" class="form-control" value="{{$prospect->householdDocument->current_credit}}" name="household_document_current_credit">
       </div>
 
       <div class="col-md-3">
           <label class="form-label" for="household_document_debt_with_monthly_credit">Debt With
               Monthly Credit</label>
           <input type="number" class="form-control"
-              value="{{$householdDocument->debt_with_monthly_credit}}" name="household_document_debt_with_monthly_credit">
+              value="{{$prospect->householdDocument->debt_with_monthly_credit}}" name="household_document_debt_with_monthly_credit">
       </div>
 
       <div class="col-md-3">
           <label class="form-label" for="household_document_debt_with_annual_credit">Debt With
               Annual Credit</label>
           <input type="number" class="form-control"
-              value="{{$householdDocument->debt_with_annual_credit}}" name="household_document_debt_with_annual_credit">
+              value="{{$prospect->householdDocument->debt_with_annual_credit}}" name="household_document_debt_with_annual_credit">
       </div>
 
       <div class="col-md-3">
           <label class="form-label" for="household_document_capacity">Capacity</label>
-          <input type="number" class="form-control" value="{{$householdDocument->capacity}}" name="household_document_capacity">
+          <input type="number" class="form-control" value="{{$prospect->householdDocument->capacity}}" name="household_document_capacity">
       </div>
 
   </div>

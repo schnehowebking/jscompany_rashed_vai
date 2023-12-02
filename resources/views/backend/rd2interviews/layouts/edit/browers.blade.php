@@ -5,16 +5,16 @@
   <div class="row mt-2">
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_name_or_ste">Bank Name</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->name_or_ste}}" name="co_borrower_info_name_or_ste">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->name_or_ste}}" name="co_borrower_info_name_or_ste">
       </div>
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_first_name">First Name</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->first_name}}" name="co_borrower_info_first_name">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->first_name}}" name="co_borrower_info_first_name">
       </div>
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_current_address">Current Address</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->current_address}}" name="co_borrower_info_current_address">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->current_address}}" name="co_borrower_info_current_address">
       </div>
 
 
@@ -49,7 +49,7 @@
           ?>
           <select class="form-control" name="co_borrower_info_municipality">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->municipality ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->municipality ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
           </select>
       </div>
@@ -58,28 +58,28 @@
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_mobile_phone">Mobile Phone</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->mobile_phone}}" name="co_borrower_info_mobile_phone">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->mobile_phone}}" name="co_borrower_info_mobile_phone">
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_landline_phone">Landline Phone</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->landline_phone}}" name="co_borrower_info_landline_phone">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->landline_phone}}" name="co_borrower_info_landline_phone">
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_date_of_birth">Date Of Birth</label>
-          <input type="date" class="form-control" value="{{$rd2Caller->rd2brower->date_of_birth}}" name="co_borrower_info_date_of_birth">
+          <input type="date" class="form-control" value="{{$prospect->rd2Caller->rd2brower->date_of_birth}}" name="co_borrower_info_date_of_birth">
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_place_of_birth">Place Of Birth</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->place_of_birth}}" name="co_borrower_info_place_of_birth">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->place_of_birth}}" name="co_borrower_info_place_of_birth">
       </div>
 
 
@@ -87,28 +87,28 @@
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_current_residence">Current
               Residence</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->current_residence}}" name="co_borrower_info_current_residence">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->current_residence}}" name="co_borrower_info_current_residence">
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_business_phone">Business Phone</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->business_phone}}" name="co_borrower_info_business_phone">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->business_phone}}" name="co_borrower_info_business_phone">
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_email">Email</label>
-          <input type="email" class="form-control" value="{{$rd2Caller->rd2brower->email}}" name="co_borrower_info_email">
+          <input type="email" class="form-control" value="{{$prospect->rd2Caller->rd2brower->email}}" name="co_borrower_info_email">
       </div>
 
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_profession">Profession</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->profession}}" name="co_borrower_info_profession">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->profession}}" name="co_borrower_info_profession">
       </div>
 
 
@@ -127,7 +127,7 @@
       ?>
               <select class="form-control"  name="co_borrower_info_type_of_contract">
                   @foreach ($all_browers as $b)
-                      <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->type_of_contract ? 'selected' : '' }}>{{$b}}</option>
+                      <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->type_of_contract ? 'selected' : '' }}>{{$b}}</option>
                   @endforeach
               </select>
       </div>
@@ -155,7 +155,7 @@
           ?>
           <select class="form-control" name="co_borrower_info_professional_maturity_months">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->professional_maturity_months ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->professional_maturity_months ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
       </div>
 
@@ -175,7 +175,7 @@
           ?>
           <select class="form-control" name="co_borrower_info_bank_name">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->bank_name ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->bank_name ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
           </select>
       </div>
@@ -185,14 +185,14 @@
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_savings_info">Savings
               (PEL-CEL-....)</label>
-          <input type="text" class="form-control" value="{{$rd2Caller->rd2brower->savings_info}}" name="co_borrower_info_savings_info">
+          <input type="text" class="form-control" value="{{$prospect->rd2Caller->rd2brower->savings_info}}" name="co_borrower_info_savings_info">
       </div>
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_annual_tax_income">Annual Tax
               Income</label>
-          <input type="number" class="form-control" value="{{$rd2Caller->rd2brower->annual_tax_income}}" name="co_borrower_info_annual_tax_income">
+          <input type="number" class="form-control" value="{{$prospect->rd2Caller->rd2brower->annual_tax_income}}" name="co_borrower_info_annual_tax_income">
       </div>
 
 
@@ -211,7 +211,7 @@
           ?>
           <select class="form-control" name="co_borrower_info_child_dependent_on_tax">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->child_dependent_on_tax ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->child_dependent_on_tax ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
           </select>
       </div>
@@ -219,13 +219,13 @@
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_rental_charge">Rental Charge</label>
-          <input type="number" class="form-control" value="{{$rd2Caller->rd2brower->rental_charge}}" name="co_borrower_info_rental_charge">
+          <input type="number" class="form-control" value="{{$prospect->rd2Caller->rd2brower->rental_charge}}" name="co_borrower_info_rental_charge">
       </div>
 
 
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_rental_income">Rental Income</label>
-          <input type="number" class="form-control" value="{{$rd2Caller->rd2brower->rental_income}}" name="co_borrower_info_rental_income">
+          <input type="number" class="form-control" value="{{$prospect->rd2Caller->rd2brower->rental_income}}" name="co_borrower_info_rental_income">
       </div>
 
 
@@ -233,7 +233,7 @@
           <label class="form-label" for="co_borrower_info_rental_income_70_percent">Rental Income 70
               Percent</label>
           <input type="number" class="form-control"
-              value="{{$rd2Caller->rd2brower->rental_income_70_percent}}" name="co_borrower_info_rental_income_70_percent">
+              value="{{$prospect->rd2Caller->rd2brower->rental_income_70_percent}}" name="co_borrower_info_rental_income_70_percent">
       </div>
 
 
@@ -258,7 +258,7 @@
           ?>
           <select class="form-control" name="co_borrower_info_bank_seniority_months">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->bank_seniority_months ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->bank_seniority_months ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
           </select>
       </div>
@@ -285,7 +285,7 @@
           ?>
           <select class="form-control" name="co_borrower_info_seniority_pel_months">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->seniority_pel_months ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->seniority_pel_months ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
           </select>
       </div>
@@ -296,7 +296,7 @@
               Remaining To
               Settle</label>
           <input type="number" class="form-control"
-              value="{{$rd2Caller->rd2brower->credit_remaining_to_settle}}" name="co_borrower_info_credit_remaining_to_settle">
+              value="{{$prospect->rd2Caller->rd2brower->credit_remaining_to_settle}}" name="co_borrower_info_credit_remaining_to_settle">
       </div>
 
 
@@ -307,7 +307,7 @@
               Per
               Month</label>
           <input type="number" class="form-control"
-              value="{{$rd2Caller->rd2brower->credit_a_in_progress_per_month}}" name="co_borrower_info_credit_a_in_progress_per_month">
+              value="{{$prospect->rd2Caller->rd2brower->credit_a_in_progress_per_month}}" name="co_borrower_info_credit_a_in_progress_per_month">
       </div>
 
 
@@ -317,7 +317,7 @@
               for="co_borrower_info_remaining_month_credit_a_in_progress">Remaining Month
               Credit A In Progress</label>
           <input type="number" class="form-control"
-              value="{{$rd2Caller->rd2brower->remaining_month_credit_a_in_progress}}" name="co_borrower_info_remaining_month_credit_a_in_progress">
+              value="{{$prospect->rd2Caller->rd2brower->remaining_month_credit_a_in_progress}}" name="co_borrower_info_remaining_month_credit_a_in_progress">
       </div>
 
 
@@ -333,14 +333,14 @@
           ?>
           <select class="form-control"  name="co_borrower_info_family_situation">
               @foreach ($all_browers as $b)
-                  <option value="{{$b}}" {{$b == $rd2Caller->rd2brower->family_situation ? 'selected' : '' }}>{{$b}}</option>
+                  <option value="{{$b}}" {{$b == $prospect->rd2Caller->rd2brower->family_situation ? 'selected' : '' }}>{{$b}}</option>
               @endforeach
           </select>
       </div>
       <div class="col-md-3">
           <label class="form-label" for="co_borrower_info_personal_contribution">Personal
               Contribution</label>
-          <input type="number" class="form-control" value="{{$rd2Caller->rd2brower->personal_contribution}}" name="co_borrower_info_personal_contribution">
+          <input type="number" class="form-control" value="{{$prospect->rd2Caller->rd2brower->personal_contribution}}" name="co_borrower_info_personal_contribution">
       </div>
   </div>
 </div>
