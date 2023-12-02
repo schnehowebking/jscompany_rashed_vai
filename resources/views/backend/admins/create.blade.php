@@ -47,13 +47,13 @@
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="password">Password</label>
         <div class="col-sm-10">
-            <input type="password" id="password" name="password" class="form-control"/>
+            <input type="password" id="password" name="password" class="form-control" minlength="6"/>
         </div>
       </div>
       <div class="row mb-3">
         <label class="col-sm-2 col-form-label" for="confirm_password">Confirm Password</label>
         <div class="col-sm-10">
-            <input type="password" id="confirm_password" name="password_confirmation" class="form-control"/>
+            <input type="password" id="confirm_password" name="password_confirmation" class="form-control" minlength="6"/>
         </div>
       </div>
       <div class="row mb-3">
